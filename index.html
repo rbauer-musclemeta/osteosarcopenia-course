@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Osteosarcopenia Protocol — Muscle-Meta Matrix™</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --teal:#009090;--teal-lt:#e0f4f4;
+      --gold:#D4AF37;--gold-lt:#fdf6dc;
+      --purple:#6b3fa0;--purp-lt:#f0ebf8;
+      --dark:#1a1a2e;--gray:#6c757d;
+      --line:#e0e0e0;--bg:#f5f6f8;--white:#ffffff;
+      --locked:#adb5bd;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:Georgia,'Times New Roman',serif;background:var(--bg);color:var(--dark);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    button{cursor:pointer;border:none;background:none;font-family:inherit}
+
+    /* Header */
+    .site-header{background:var(--dark);padding:0 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+    .header-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand-mark{width:32px;height:32px;border-radius:6px;background:var(--teal);display:flex;align-items:center;justify-content:center;font-family:sans-serif;font-size:13px;font-weight:900;color:#fff;letter-spacing:-1px}
+    .brand-text{font-family:sans-serif}
+    .brand-text span{display:block;font-size:11px;font-weight:700;color:var(--teal);letter-spacing:2px;text-transform:uppercase}
+    .brand-text strong{display:block;font-size:13px;font-weight:700;color:#fff}
+    .progress-badge{font-family:sans-serif;font-size:12px;color:rgba(255,255,255,.5)}
+    .progress-badge strong{color:var(--gold)}
+
+    /* Hero */
+    .hero{background:var(--dark);border-bottom:3px solid var(--teal);padding:56px 24px 48px;text-align:center}
+    .hero-eyebrow{font-family:sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
+    .hero h1{font-size:clamp(22px,4vw,34px);font-weight:700;color:#fff;max-width:680px;margin:0 auto 16px;line-height:1.25}
+    .hero h1 em{color:var(--gold);font-style:normal}
+    .hero-sub{font-family:sans-serif;font-size:15px;color:rgba(255,255,255,.55);max-width:540px;margin:0 auto 32px}
+    .hero-stats{display:flex;justify-content:center;flex-wrap:wrap;max-width:420px;margin:0 auto;border:1px solid rgba(255,255,255,.1);border-radius:10px;overflow:hidden}
+    .hero-stat{flex:1 1 100px;padding:14px 20px;border-right:1px solid rgba(255,255,255,.1);font-family:sans-serif}
+    .hero-stat:last-child{border-right:none}
+    .hero-stat strong{display:block;font-size:22px;font-weight:700;color:var(--gold)}
+    .hero-stat span{font-size:11px;color:rgba(255,255,255,.4);letter-spacing:1px;text-transform:uppercase}
+
+    /* Progress Steps */
+    .progress-section{max-width:860px;margin:36px auto 0;padding:0 24px}
+    .progress-track{display:flex;align-items:center;position:relative}
+    .progress-step{display:flex;flex-direction:column;align-items:center;flex:1;position:relative}
+    .progress-step::after{content:'';position:absolute;left:50%;top:18px;width:100%;height:2px;background:var(--line);z-index:0}
+    .progress-step:last-child::after{display:none}
+    .progress-step.done::after{background:var(--teal)}
+    .step-dot{width:36px;height:36px;border-radius:50%;background:#fff;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:sans-serif;font-size:13px;font-weight:700;color:var(--locked);position:relative;z-index:1;transition:all .3s}
+    .progress-step.done .step-dot{background:var(--teal);border-color:var(--teal);color:#fff}
+    .progress-step.active .step-dot{background:#fff;border-color:var(--teal);color:var(--teal);box-shadow:0 0 0 4px var(--teal-lt)}
+    .step-label{font-family:sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--locked);margin-top:6px;text-align:center}
+    .progress-step.done .step-label,.progress-step.active .step-label{color:var(--teal)}
+
+    /* Main */
+    .main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+
+    /* Phase Card */
+    .phase{background:var(--white);border-radius:12px;border:1px solid var(--line);margin-bottom:28px;overflow:hidden;transition:box-shadow .2s}
+    .phase.active{box-shadow:0 4px 24px rgba(0,144,144,.12);border-color:var(--teal)}
+    .phase.locked{opacity:.55;pointer-events:none}
+    .phase-2.active{box-shadow:0 4px 24px rgba(107,63,160,.12);border-color:var(--purple)}
+    .phase-3.active{box-shadow:0 4px 24px rgba(212,175,55,.15);border-color:var(--gold)}
+
+    .phase-header{padding:22px 28px;display:flex;align-items:center;gap:18px;border-bottom:1px solid var(--line);cursor:pointer;user-select:none;transition:background .15s}
+    .phase-header:hover{background:#fafafa}
+    .phase-locked-header{border-bottom:none;cursor:default}
+    .phase-locked-header:hover{background:var(--white)}
+
+    .phase-num{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:sans-serif;font-size:16px;font-weight:800;flex-shrink:0}
+    .phase-1 .phase-num{background:var(--teal-lt);color:var(--teal)}
+    .phase-2 .phase-num{background:var(--purp-lt);color:var(--purple)}
+    .phase-3 .phase-num{background:var(--gold-lt);color:#8a6800}
+
+    .phase-meta{flex:1}
+    .phase-eyebrow{font-family:sans-serif;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:3px}
+    .phase-1 .phase-eyebrow{color:var(--teal)}
+    .phase-2 .phase-eyebrow{color:var(--purple)}
+    .phase-3 .phase-eyebrow{color:#8a6800}
+
+    .phase-title{font-size:17px;font-weight:700;color:var(--dark);line-height:1.3}
+    .phase-badge{font-family:sans-serif;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;flex-shrink:0;white-space:nowrap}
+    .badge-complete{background:#d1fae5;color:#065f46}
+    .badge-active{background:var(--teal-lt);color:var(--teal)}
+    .phase-2.active .badge-active{background:var(--purp-lt);color:var(--purple)}
+    .phase-3.active .badge-active{background:var(--gold-lt);color:#8a6800}
+    .badge-locked{background:#f0f0f0;color:var(--locked)}
+    .phase-chevron{font-size:12px;color:var(--gray);flex-shrink:0;transition:transform .2s}
+    .phase.collapsed .phase-chevron{transform:rotate(-90deg)}
+
+    /* Phase Body */
+    .phase-body{padding:28px 28px 0}
+    .phase.collapsed .phase-body{display:none}
+
+    .science-hook{background:var(--bg);border-radius:8px;padding:16px 18px;margin-bottom:22px;border-left:3px solid var(--teal)}
+    .phase-2 .science-hook{border-left-color:var(--purple)}
+    .phase-3 .science-hook{border-left-color:var(--gold)}
+    .science-hook p{font-size:13px;font-family:sans-serif;color:var(--gray);margin:0;line-height:1.65}
+    .science-hook strong{color:var(--dark)}
+
+    .phase-section-title{font-family:sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-bottom:12px}
+
+    .concepts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+    .concept-pill{font-family:sans-serif;font-size:12px;font-weight:600;padding:5px 13px;border-radius:20px;background:var(--bg);color:var(--dark);border:1px solid var(--line)}
+
+    /* Assets */
+    .assets-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-bottom:28px}
+    .asset-card{border:1px solid var(--line);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;transition:border-color .2s,box-shadow .2s}
+    .asset-card:hover{border-color:var(--teal);box-shadow:0 2px 8px rgba(0,144,144,.1)}
+    .phase-2 .asset-card:hover{border-color:var(--purple);box-shadow:0 2px 8px rgba(107,63,160,.1)}
+    .phase-3 .asset-card:hover{border-color:var(--gold);box-shadow:0 2px 8px rgba(212,175,55,.12)}
+    .asset-top{display:flex;align-items:center;gap:10px}
+    .asset-icon{font-size:20px;line-height:1}
+    .asset-name{font-family:sans-serif;font-size:13px;font-weight:700;color:var(--dark);line-height:1.25}
+    .asset-type{font-family:sans-serif;font-size:10px;color:var(--gray);font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-top:2px}
+    .asset-desc{font-family:sans-serif;font-size:11px;color:var(--gray);line-height:1.55;flex:1}
+    .asset-download{display:flex;align-items:center;justify-content:center;gap:6px;padding:9px 14px;border-radius:6px;font-family:sans-serif;font-size:12px;font-weight:700;background:var(--teal);color:#fff;transition:background .15s;margin-top:auto}
+    .asset-download:hover{background:#007070}
+    .phase-2 .asset-download{background:var(--purple)}
+    .phase-2 .asset-download:hover{background:#562e85}
+    .phase-3 .asset-download{background:#8a6800}
+    .phase-3 .asset-download:hover{background:#6b5000}
+
+    /* Footer */
+    .phase-footer{padding:20px 28px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line)}
+    .footer-note{font-family:sans-serif;font-size:12px;color:var(--gray);flex:1;line-height:1.5}
+    .btn-complete{padding:12px 28px;border-radius:8px;font-family:sans-serif;font-size:14px;font-weight:700;color:#fff;background:var(--teal);transition:background .15s,transform .1s;flex-shrink:0}
+    .btn-complete:hover{background:#007070;transform:translateY(-1px)}
+    .btn-complete:active{transform:translateY(0)}
+    .phase-2 .btn-complete{background:var(--purple)}
+    .phase-2 .btn-complete:hover{background:#562e85}
+    .phase-3 .btn-complete{background:#8a6800}
+    .phase-3 .btn-complete:hover{background:#6b5000}
+    .complete-check{display:flex;align-items:center;gap:8px;font-family:sans-serif;font-size:13px;font-weight:700;color:#059669}
+
+    /* Locked */
+    .locked-body{padding:28px;display:flex;align-items:center;gap:14px;font-family:sans-serif;font-size:13px;color:var(--locked)}
+    .lock-icon{font-size:28px}
+
+    /* Footer */
+    .site-footer{border-top:1px solid var(--line);padding:32px 24px;text-align:center;font-family:sans-serif;font-size:12px;color:var(--gray)}
+    .site-footer strong{color:var(--teal)}
+
+    @media(max-width:560px){
+      .hero{padding:36px 16px 32px}
+      .phase-header{padding:16px 18px;gap:12px}
+      .phase-body{padding:18px 18px 0}
+      .phase-footer{padding:16px 18px 20px}
+      .phase-title{font-size:15px}
+      .assets-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-mark">MM</div>
+      <div class="brand-text">
+        <span>Muscle-Meta Matrix™</span>
+        <strong>The Osteosarcopenia Protocol</strong>
+      </div>
+    </div>
+    <div class="progress-badge" id="headerProgress">Phase <strong>1</strong> of 3</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-eyebrow">3-Phase Mini-Course</div>
+  <h1>Stop Bone Loss &amp; Muscle Decline <em>Simultaneously</em></h1>
+  <p class="hero-sub">Evidence-based protocols from Randy Bauer PT — complete each phase to unlock the next and download all clinical resources.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><strong>3</strong><span>Phases</span></div>
+    <div class="hero-stat"><strong>7</strong><span>PDFs</span></div>
+    <div class="hero-stat"><strong>30</strong><span>Day Plan</span></div>
+  </div>
+</section>
+
+<div class="progress-section">
+  <div class="progress-track">
+    <div class="progress-step active" id="step1">
+      <div class="step-dot" id="dot1">1</div>
+      <div class="step-label">Science</div>
+    </div>
+    <div class="progress-step" id="step2">
+      <div class="step-dot" id="dot2">2</div>
+      <div class="step-label">Movement</div>
+    </div>
+    <div class="progress-step" id="step3">
+      <div class="step-dot" id="dot3">3</div>
+      <div class="step-label">Nutrition</div>
+    </div>
+  </div>
+</div>
+
+<main class="main">
+
+  <!-- PHASE 1 -->
+  <article class="phase phase-1 active" id="phase1">
+    <div class="phase-header" onclick="togglePhase(1)">
+      <div class="phase-num">01</div>
+      <div class="phase-meta">
+        <div class="phase-eyebrow">Phase 1 · The Science Foundation</div>
+        <div class="phase-title">Why Your Bones &amp; Muscles Are Failing Together</div>
+      </div>
+      <span class="phase-badge badge-active" id="badge1">In Progress</span>
+      <span class="phase-chevron" id="chevron1">▼</span>
+    </div>
+    <div class="phase-body" id="body1">
+      <div class="science-hook">
+        <p><strong>The central insight:</strong> Bone and muscle don't decline independently — they share a biochemical crosstalk axis. Osteocalcin from bone drives glucose uptake in muscle; IGF-1 and myokines from muscle govern osteoblast activity. Targeting one without the other is why most programs fail after 55.</p>
+      </div>
+      <div class="phase-section-title">Key Concepts Covered</div>
+      <div class="concepts">
+        <span class="concept-pill">Osteosarcopenia defined</span>
+        <span class="concept-pill">Bone-muscle crosstalk axis</span>
+        <span class="concept-pill">Mechanostat theory</span>
+        <span class="concept-pill">4-Pillar framework</span>
+        <span class="concept-pill">Risk tier assessment</span>
+        <span class="concept-pill">Anabolic resistance</span>
+      </div>
+      <div class="phase-section-title">Your Phase 1 Resource</div>
+      <div class="assets-grid">
+        <div class="asset-card">
+          <div class="asset-top">
+            <div class="asset-icon">📘</div>
+            <div>
+              <div class="asset-name">Osteosarcopenia Protocol Guide</div>
+              <div class="asset-type">Branded PDF · 7 pages</div>
+            </div>
+          </div>
+          <div class="asset-desc">Science deep-dive — crosstalk axis, risk tiers, 4-pillar framework, and your baseline protocol overview.</div>
+          <a class="asset-download" href="assets/Osteosarcopenia-Protocol-Guide.pdf" download>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download PDF
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="phase-footer" id="footer1">
+      <div class="footer-note">Read the Protocol Guide, then mark complete to unlock your Movement Blueprint.</div>
+      <button class="btn-complete" onclick="completePhase(1)" id="btn1">Mark Phase 1 Complete →</button>
+    </div>
+  </article>
+
+  <!-- PHASE 2 -->
+  <article class="phase phase-2 locked" id="phase2">
+    <div class="phase-header phase-locked-header" id="header2">
+      <div class="phase-num">02</div>
+      <div class="phase-meta">
+        <div class="phase-eyebrow">Phase 2 · The Movement Blueprint</div>
+        <div class="phase-title">The 12-Movement System That Loads Bone and Muscle Simultaneously</div>
+      </div>
+      <span class="phase-badge badge-locked" id="badge2">Locked</span>
+      <span class="phase-chevron" id="chevron2" style="opacity:.3">🔒</span>
+    </div>
+    <div class="locked-body" id="lockedBody2">
+      <div class="lock-icon">🔒</div>
+      <div>Complete Phase 1 to unlock your Movement Blueprint and all three Tier handouts.</div>
+    </div>
+    <div class="phase-body" id="body2" style="display:none">
+      <div class="science-hook">
+        <p><strong>The mechanical threshold problem:</strong> Bone responds to strain above ~70% of its maximum — below that, no osteogenic signal is generated. Most senior exercise programs operate at 30–40% load. This phase closes the gap with a 3-tier progression calibrated to activate both fast-twitch fibers and the bone mechanostat simultaneously.</p>
+      </div>
+      <div class="phase-section-title">Key Concepts Covered</div>
+      <div class="concepts">
+        <span class="concept-pill">Wolff's Law &amp; osteogenic threshold</span>
+        <span class="concept-pill">Fast-twitch fiber preservation</span>
+        <span class="concept-pill">Ground reaction force loading</span>
+        <span class="concept-pill">Progressive overload mechanics</span>
+        <span class="concept-pill">Tier 1 → 2 → 3 progression</span>
+        <span class="concept-pill">Session frequency targets</span>
+      </div>
+      <div class="phase-section-title">Your Phase 2 Resources</div>
+      <div class="assets-grid">
+        <div class="asset-card">
+          <div class="asset-top"><div class="asset-icon">🗺️</div><div><div class="asset-name">Movement Blueprint</div><div class="asset-type">Branded PDF · 5 pages</div></div></div>
+          <div class="asset-desc">Full 12-movement system with progression structure, osteogenic loading zones, and clinical case examples.</div>
+          <a class="asset-download" href="assets/Osteosarcopenia-Movement-Blueprint.pdf" download><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PDF</a>
+        </div>
+        <div class="asset-card">
+          <div class="asset-top"><div class="asset-icon">🏋️</div><div><div class="asset-name">Tier 1 — Foundation Handout</div><div class="asset-type">B&amp;W Printable · Landscape</div></div></div>
+          <div class="asset-desc">4 foundational movements with dose, why it works, and progression cues. Print and use at home or gym.</div>
+          <a class="asset-download" href="assets/Osteosarcopenia-Tier-1-FOUNDATION-Handout.pdf" download><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PDF</a>
+        </div>
+        <div class="asset-card">
+          <div class="asset-top"><div class="asset-icon">⚡</div><div><div class="asset-name">Tier 2 — Load Handout</div><div class="asset-type">B&amp;W Printable · Landscape</div></div></div>
+          <div class="asset-desc">4 loaded progressions targeting bone stress thresholds. Introduced at Week 3 of your protocol.</div>
+          <a class="asset-download" href="assets/Osteosarcopenia-Tier-2-LOAD-Handout.pdf" download><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PDF</a>
+        </div>
+        <div class="asset-card">
+          <div class="asset-top"><div class="asset-icon">🔥</div><div><div class="asset-name">Tier 3 — Power Handout</div><div class="asset-type">B&amp;W Printable · Landscape</div></div></div>
+          <div class="asset-desc">4 power-based movements for fast-twitch activation and peak osteogenic stimulus. Week 5+ progression.</div>
+          <a class="asset-download" href="assets/Osteosarcopenia-Tier-3-POWER-Handout.pdf" download><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PDF</a>
+        </div>
+      </div>
+    </div>
+    <div class="phase-footer" id="footer2" style="display:none">
+      <div class="footer-note">Download your tier handouts, follow Tier 1 for 2 weeks, then mark complete to unlock the Nutrition Protocol.</div>
+      <button class="btn-complete" onclick="completePhase(2)" id="btn2">Mark Phase 2 Complete →</button>
+    </div>
+  </article>
+
+  <!-- PHASE 3 -->
+  <article class="phase phase-3 locked" id="phase3">
+    <div class="phase-header phase-locked-header" id="header3">
+      <div class="phase-num">03</div>
+      <div class="phase-meta">
+        <div class="phase-eyebrow">Phase 3 · The Nutrition Protocol</div>
+        <div class="phase-title">The Protein Timing Window That Rebuilds Bone (Most People Miss This)</div>
+      </div>
+      <span class="phase-badge badge-locked" id="badge3">Locked</span>
+      <span class="phase-chevron" id="chevron3" style="opacity:.3">🔒</span>
+    </div>
+    <div class="locked-body" id="lockedBody3">
+      <div class="lock-icon">🔒</div>
+      <div>Complete Phase 2 to unlock the Nutrition Protocol, your Leucine Reference Card, and 30-Day Workbook.</div>
+    </div>
+    <div class="phase-body" id="body3" style="display:none">
+      <div class="science-hook">
+        <p><strong>The post-exercise window:</strong> After resistance training, a 45-minute anabolic window opens during which leucine triggers mTORC1 and simultaneously elevates osteocalcin. After 55, anabolic resistance means the leucine threshold rises to 2.5–3g per meal — nearly double the younger adult requirement. Timing and threshold together determine whether you rebuild or continue to decline.</p>
+      </div>
+      <div class="phase-section-title">Key Concepts Covered</div>
+      <div class="concepts">
+        <span class="concept-pill">Post-exercise anabolic window</span>
+        <span class="concept-pill">Osteocalcin trigger</span>
+        <span class="concept-pill">Leucine threshold (2.5–3g/meal)</span>
+        <span class="concept-pill">Anabolic resistance &amp; age</span>
+        <span class="concept-pill">Protein distribution strategy</span>
+        <span class="concept-pill">Micronutrient stack (D3/K2/Mg)</span>
+      </div>
+      <div class="phase-section-title">Your Phase 3 Resources</div>
+      <div class="assets-grid">
+        <div class="asset-card">
+          <div class="asset-top"><div class="asset-icon">🧬</div><div><div class="asset-name">Leucine Reference Card</div><div class="asset-type">B&amp;W Printable · 1 page</div></div></div>
+          <div class="asset-desc">14 foods ranked by leucine content, threshold bar chart by age, and top meal combinations to hit 2.5–3g per sitting.</div>
+          <a class="asset-download" href="assets/Osteosarcopenia-Leucine-Reference-Card.pdf" download><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PDF</a>
+        </div>
+        <div class="asset-card">
+          <div class="asset-top"><div class="asset-icon">📋</div><div><div class="asset-name">30-Day Action Plan Workbook</div><div class="asset-type">B&amp;W Printable · 5 pages</div></div></div>
+          <div class="asset-desc">Week-by-week movement logs, protein grids, post-workout timing tracker, and Day 30 reassessment with scoring key.</div>
+          <a class="asset-download" href="assets/Osteosarcopenia-30Day-Action-Plan-Workbook.pdf" download><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PDF</a>
+        </div>
+      </div>
+    </div>
+    <div class="phase-footer" id="footer3" style="display:none">
+      <div class="footer-note" id="finalNote">Complete the protocol and use your Day 30 workbook to score your reassessment results.</div>
+      <div class="complete-check" id="finalCheck" style="display:none">✅ Protocol Complete — well done.</div>
+      <button class="btn-complete" onclick="completePhase(3)" id="btn3">Complete the Protocol ✓</button>
+    </div>
+  </article>
+
+</main>
+
+<footer class="site-footer">
+  <strong>Muscle-Meta Matrix™</strong> · The Osteosarcopenia Protocol<br>
+  Created by Randy Bauer PT · Evidence-based clinical protocols for adults 45+
+</footer>
+
+<script>
+const KEY='osteosarcopenia_v1';
+function getP(){try{return JSON.parse(localStorage.getItem(KEY))||{done:[]}}catch{return{done:[]}}}
+function saveP(d){localStorage.setItem(KEY,JSON.stringify(d))}
+
+function unlockPhase(n){
+  var phase=document.getElementById('phase'+n);
+  var header=document.getElementById('header'+n);
+  var badge=document.getElementById('badge'+n);
+  var chevron=document.getElementById('chevron'+n);
+  var locked=document.getElementById('lockedBody'+n);
+  var body=document.getElementById('body'+n);
+  var footer=document.getElementById('footer'+n);
+  phase.classList.remove('locked');
+  phase.classList.add('active');
+  if(locked)locked.style.display='none';
+  if(body)body.style.display='block';
+  if(footer)footer.style.display='flex';
+  badge.textContent='In Progress';
+  badge.className='phase-badge badge-active';
+  chevron.textContent='▼';
+  chevron.style.opacity='1';
+  if(n>1){
+    header.classList.remove('phase-locked-header');
+    header.setAttribute('onclick','togglePhase('+n+')');
+  }
+  updateStep(n,'active');
+  updateHeader();
+  setTimeout(function(){phase.scrollIntoView({behavior:'smooth',block:'start'})},100);
+}
+
+function completePhase(n){
+  var badge=document.getElementById('badge'+n);
+  var btn=document.getElementById('btn'+n);
+  var phase=document.getElementById('phase'+n);
+  badge.textContent='✓ Complete';
+  badge.className='phase-badge badge-complete';
+  if(btn)btn.style.display='none';
+  phase.classList.add('collapsed');
+  var p=getP();
+  if(p.done.indexOf(n)<0)p.done.push(n);
+  saveP(p);
+  updateStep(n,'done');
+  updateHeader();
+  if(n<3){setTimeout(function(){unlockPhase(n+1)},350)}
+  else{
+    document.getElementById('finalNote').textContent='🎉 Congratulations — protocol complete. Use your Day 30 workbook to score your reassessment.';
+    document.getElementById('finalCheck').style.display='flex';
+  }
+}
+
+function togglePhase(n){
+  var phase=document.getElementById('phase'+n);
+  var chevron=document.getElementById('chevron'+n);
+  if(phase.classList.contains('locked'))return;
+  phase.classList.toggle('collapsed');
+  chevron.textContent=phase.classList.contains('collapsed')?'▶':'▼';
+}
+
+function updateStep(n,state){
+  var step=document.getElementById('step'+n);
+  var dot=document.getElementById('dot'+n);
+  step.className='progress-step '+state;
+  if(state==='done')dot.textContent='✓';
+}
+
+function updateHeader(){
+  var p=getP();
+  var el=document.getElementById('headerProgress');
+  var cur=Math.min(p.done.length+1,3);
+  if(p.done.length>=3){el.innerHTML='<strong style="color:var(--gold)">✓ All Phases Complete</strong>'}
+  else{el.innerHTML='Phase <strong>'+cur+'</strong> of 3'}
+}
+
+function restoreProgress(){
+  var p=getP();
+  var done=p.done.sort();
+  done.forEach(function(n){
+    updateStep(n,'done');
+    var badge=document.getElementById('badge'+n);
+    badge.textContent='✓ Complete';
+    badge.className='phase-badge badge-complete';
+    var btn=document.getElementById('btn'+n);
+    if(btn)btn.style.display='none';
+    var phase=document.getElementById('phase'+n);
+    phase.classList.remove('locked');
+    phase.classList.add('active','collapsed');
+    var locked=document.getElementById('lockedBody'+n);
+    if(locked)locked.style.display='none';
+    var body=document.getElementById('body'+n);
+    if(body)body.style.display='block';
+    var footer=document.getElementById('footer'+n);
+    if(footer)footer.style.display='flex';
+    if(n>1){
+      var header=document.getElementById('header'+n);
+      header.classList.remove('phase-locked-header');
+      header.setAttribute('onclick','togglePhase('+n+')');
+    }
+  });
+  var next=done.length+1;
+  if(next<=3&&done.indexOf(next)<0&&next>1){
+    unlockPhase(next);
+  }
+  updateHeader();
+}
+
+restoreProgress();
+</script>
+</body>
+</html>
