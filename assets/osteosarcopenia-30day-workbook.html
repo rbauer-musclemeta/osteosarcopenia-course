@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Osteosarcopenia Protocol · 30-Day Action Plan Workbook · Muscle-Meta Matrix™</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<style>
+  /* ── DESIGN TOKENS ── BLACK & WHITE EDITION ─────────────────── */
+  :root {
+    --ink:          #0a0a0a;
+    --ink-90:       #1a1a1a;
+    --ink-70:       #333333;
+    --ink-50:       #666666;
+    --ink-30:       #999999;
+    --ink-15:       #d9d9d9;
+    --ink-06:       #f0efec;
+    --ink-03:       #f7f6f3;
+    --white:        #ffffff;
+
+    --gold:         #1a1a1a;          /* repurposed as dark accent in B&W */
+    --gold-rule:    #888888;          /* mid-gray rules */
+
+    --shadow-sm: 0 1px 4px rgba(0,0,0,.08);
+    --shadow-md: 0 4px 16px rgba(0,0,0,.10);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,.14);
+    --shadow-hover: 0 20px 50px rgba(0,0,0,.20);
+
+    --radius: 12px;
+    --radius-lg: 20px;
+    --transition: all .28s cubic-bezier(.4,0,.2,1);
+  }
+
+  /* ── RESET ──────────────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--ink-03);
+    color: var(--ink-70);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* ── NOISE TEXTURE ───────────────────────────────────────────── */
+  body::after {
+    content: '';
+    position: fixed; inset: 0; z-index: 9999;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: .018;
+  }
+
+  /* ── HEADER ─────────────────────────────────────────────────── */
+  .site-header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,.94);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--ink-15);
+    padding: 0 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+    box-shadow: var(--shadow-sm);
+  }
+  .logo-mark {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none; color: inherit;
+  }
+  .logo-box {
+    width: 36px; height: 36px;
+    background: var(--ink-90);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .logo-box i { color: #fff; font-size: 14px; }
+  .logo-box::after {
+    content: '';
+    position: absolute; bottom: -2px; right: -2px;
+    width: 10px; height: 10px;
+    background: var(--ink-50);
+    border-radius: 2px;
+  }
+  .logo-text { display: flex; flex-direction: column; line-height: 1.15; }
+  .logo-name { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 16px; color: var(--ink-90); }
+  .logo-sub  { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-50); }
+  .header-actions { display: flex; gap: 10px; align-items: center; }
+  .btn-icon {
+    width: 38px; height: 38px; border-radius: 8px;
+    border: 1px solid var(--ink-15);
+    background: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: var(--ink-70);
+    transition: var(--transition);
+  }
+  .btn-icon:hover { background: var(--ink-06); border-color: var(--ink-30); box-shadow: var(--shadow-sm); }
+  .btn-print {
+    padding: 0 18px; height: 38px; border-radius: 8px;
+    border: none;
+    background: var(--ink-90);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px; font-weight: 500; letter-spacing: .04em;
+    cursor: pointer;
+    display: flex; align-items: center; gap: 7px;
+    transition: var(--transition);
+  }
+  .btn-print:hover { background: var(--ink-70); box-shadow: var(--shadow-md); }
+
+  /* ── HERO ────────────────────────────────────────────────────── */
+  .hero {
+    background: var(--ink-90);
+    color: #fff;
+    padding: 64px 32px 72px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent 0 24px,
+      rgba(255,255,255,.03) 24px 25px
+    );
+  }
+  .hero-inner { max-width: 900px; margin: 0 auto; position: relative; }
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 20px;
+  }
+  .badge {
+    font-size: 10px; font-weight: 600; letter-spacing: .14em;
+    text-transform: uppercase;
+    padding: 4px 10px; border-radius: 4px;
+  }
+  .badge-outline { border: 1px solid rgba(255,255,255,.3); color: rgba(255,255,255,.85); }
+  .badge-solid   { background: rgba(255,255,255,.15); color: rgba(255,255,255,.95); }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 5vw, 54px);
+    font-weight: 700; line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .hero-subtitle {
+    font-size: 17px; color: rgba(255,255,255,.7);
+    max-width: 600px; margin-bottom: 36px;
+  }
+  .hero-meta {
+    display: flex; gap: 32px; flex-wrap: wrap;
+  }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 2px; }
+  .hero-meta-label { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.45); }
+  .hero-meta-value { font-size: 14px; font-weight: 500; color: rgba(255,255,255,.9); }
+
+  /* ── PROFILE STRIP ────────────────────────────────────────────── */
+  .profile-strip {
+    background: var(--white);
+    border-bottom: 1px solid var(--ink-15);
+    padding: 24px 32px;
+  }
+  .profile-strip-inner {
+    max-width: 900px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  .profile-field { display: flex; flex-direction: column; gap: 4px; }
+  .profile-field label { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-50); font-weight: 500; }
+  .profile-field input {
+    border: none; border-bottom: 2px solid var(--ink-15);
+    padding: 6px 2px; font-family: 'Outfit', sans-serif; font-size: 15px;
+    color: var(--ink-90); background: transparent; outline: none;
+    transition: var(--transition);
+  }
+  .profile-field input:focus { border-bottom-color: var(--ink-70); }
+
+  /* ── PHASE OVERVIEW ───────────────────────────────────────────── */
+  .section { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+  .section-gap { margin-bottom: 56px; }
+
+  .phases-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 40px 0;
+  }
+  .phase-card {
+    background: var(--white);
+    border: 1px solid var(--ink-15);
+    border-radius: var(--radius);
+    padding: 24px 20px;
+    position: relative; overflow: hidden;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .phase-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--ink-90);
+    transform: scaleX(0); transform-origin: left;
+    transition: var(--transition);
+  }
+  .phase-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--ink-30);
+  }
+  .phase-card:hover::before { transform: scaleX(1); }
+  .phase-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px; font-weight: 700;
+    color: var(--ink-15); line-height: 1;
+    margin-bottom: 8px;
+  }
+  .phase-days { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-50); margin-bottom: 8px; }
+  .phase-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 700; color: var(--ink-90); margin-bottom: 10px; }
+  .phase-tags { display: flex; flex-direction: column; gap: 5px; }
+  .phase-tag {
+    font-size: 11px; color: var(--ink-70);
+    display: flex; align-items: flex-start; gap: 6px;
+  }
+  .phase-tag i { color: var(--ink-30); margin-top: 2px; font-size: 10px; flex-shrink: 0; }
+
+  /* ── HOW TO USE ───────────────────────────────────────────────── */
+  .how-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin-top: 28px;
+  }
+  .how-card {
+    background: var(--white);
+    border: 1px solid var(--ink-15);
+    border-radius: var(--radius);
+    padding: 22px;
+    display: flex; gap: 16px;
+    transition: var(--transition);
+    cursor: default;
+  }
+  .how-card:hover { box-shadow: var(--shadow-md); border-color: var(--ink-30); transform: translateY(-2px); }
+  .how-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: var(--ink-06);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; color: var(--ink-70);
+    border: 1px solid var(--ink-15);
+  }
+  .how-body h4 { font-size: 14px; font-weight: 600; color: var(--ink-90); margin-bottom: 6px; }
+  .how-body p  { font-size: 13px; color: var(--ink-50); line-height: 1.55; }
+
+  /* ── WEEK TABS ────────────────────────────────────────────────── */
+  .week-nav {
+    display: flex; gap: 8px;
+    padding: 32px 0 0;
+    max-width: 900px; margin: 0 auto;
+    padding-left: 32px; padding-right: 32px;
+  }
+  .week-tab {
+    flex: 1; padding: 14px 8px;
+    border: 1px solid var(--ink-15);
+    border-bottom: none;
+    border-radius: 12px 12px 0 0;
+    background: var(--ink-06);
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px; font-weight: 600;
+    letter-spacing: .06em; text-transform: uppercase;
+    color: var(--ink-50); cursor: pointer;
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+  }
+  .week-tab:hover { background: var(--ink-15); color: var(--ink-90); }
+  .week-tab.active {
+    background: var(--white);
+    color: var(--ink-90);
+    border-color: var(--ink-15);
+  }
+  .week-tab.active::after {
+    content: '';
+    position: absolute; bottom: -1px; left: 0; right: 0;
+    height: 2px; background: var(--white);
+  }
+  .week-panel {
+    display: none;
+    background: var(--white);
+    border: 1px solid var(--ink-15);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    padding: 40px 40px;
+    max-width: 900px; margin: 0 auto;
+    margin-left: 32px; margin-right: 32px;
+    box-shadow: var(--shadow-md);
+  }
+  .week-panel.active { display: block; }
+
+  /* ── WEEK HEADER ─────────────────────────────────────────────── */
+  .week-header {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+    margin-bottom: 32px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--ink-06);
+  }
+  .week-title-block {}
+  .week-phase-label { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-50); margin-bottom: 8px; }
+  .week-title { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 700; color: var(--ink-90); line-height: 1.1; }
+  .week-subtitle { font-size: 14px; color: var(--ink-50); margin-top: 6px; }
+  .week-progress-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+  .week-progress-bar {
+    width: 160px; height: 6px;
+    background: var(--ink-15);
+    border-radius: 99px; overflow: hidden;
+  }
+  .week-progress-fill { height: 100%; background: var(--ink-90); border-radius: 99px; transition: width .6s ease; }
+  .week-progress-label { font-size: 11px; color: var(--ink-50); }
+
+  /* ── SECTION TITLE ───────────────────────────────────────────── */
+  .panel-section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--ink-90); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .panel-section-title i { font-size: 16px; color: var(--ink-50); }
+
+  /* ── EXERCISE CARDS ──────────────────────────────────────────── */
+  .exercise-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 28px; }
+  .exercise-card {
+    background: var(--ink-03);
+    border: 1px solid var(--ink-15);
+    border-radius: var(--radius);
+    padding: 18px 16px;
+    cursor: default; position: relative; overflow: hidden;
+    transition: var(--transition);
+  }
+  .exercise-card::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px; background: var(--ink-15);
+    transition: var(--transition);
+  }
+  .exercise-card:hover {
+    border-color: var(--ink-30);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+  .exercise-card:hover::before { background: var(--ink-90); }
+  .exercise-num { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-30); margin-bottom: 6px; }
+  .exercise-name { font-weight: 600; color: var(--ink-90); font-size: 14px; margin-bottom: 4px; }
+  .exercise-target { font-size: 12px; color: var(--ink-50); font-family: 'Cormorant Garamond', serif; font-style: italic; }
+
+  /* ── MOVEMENT LOG TABLE ──────────────────────────────────────── */
+  .log-table-wrap { overflow-x: auto; margin-bottom: 36px; }
+  .log-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 13px;
+  }
+  .log-table thead th {
+    background: var(--ink-90); color: #fff;
+    padding: 10px 12px; text-align: left;
+    font-weight: 600; letter-spacing: .04em;
+    font-size: 11px; text-transform: uppercase;
+  }
+  .log-table thead th:first-child { border-radius: 8px 0 0 0; }
+  .log-table thead th:last-child  { border-radius: 0 8px 0 0; }
+  .log-table tbody tr { border-bottom: 1px solid var(--ink-06); transition: background .18s; }
+  .log-table tbody tr:hover { background: var(--ink-03); }
+  .log-table tbody td { padding: 10px 12px; color: var(--ink-70); vertical-align: middle; }
+  .log-table tbody td:first-child { font-weight: 600; color: var(--ink-90); font-size: 14px; }
+  .log-table input[type="text"] {
+    width: 100%; border: none; border-bottom: 1px solid var(--ink-15);
+    background: transparent; font-family: 'Outfit', sans-serif;
+    font-size: 13px; color: var(--ink-90); padding: 3px 2px;
+    outline: none; transition: border-color .2s;
+    min-width: 80px;
+  }
+  .log-table input[type="text"]:focus { border-bottom-color: var(--ink-70); }
+
+  /* ── NUTRITION TABLE ─────────────────────────────────────────── */
+  .nutrition-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 32px; }
+  .nutrition-table thead th {
+    background: var(--ink-90); color: #fff;
+    padding: 10px 12px; font-size: 11px;
+    text-transform: uppercase; letter-spacing: .04em; text-align: center;
+    font-weight: 600;
+  }
+  .nutrition-table thead th:first-child { text-align: left; border-radius: 8px 0 0 0; }
+  .nutrition-table thead th:last-child  { border-radius: 0 8px 0 0; }
+  .nutrition-table tbody tr { border-bottom: 1px solid var(--ink-06); }
+  .nutrition-table tbody tr:hover { background: var(--ink-03); }
+  .nutrition-table tbody td { padding: 10px 12px; text-align: center; color: var(--ink-70); vertical-align: middle; }
+  .nutrition-table tbody td:first-child { text-align: left; font-weight: 600; color: var(--ink-90); }
+  .nutrition-table input[type="number"] {
+    width: 64px; text-align: center;
+    border: none; border-bottom: 1px solid var(--ink-15);
+    background: transparent; font-family: 'Outfit', sans-serif;
+    font-size: 13px; color: var(--ink-90); padding: 3px 2px;
+    outline: none; transition: border-color .2s;
+  }
+  .nutrition-table input[type="number"]:focus { border-bottom-color: var(--ink-70); }
+  .daily-total-cell { font-weight: 700; color: var(--ink-90); font-size: 14px; }
+
+  /* ── CHECKLIST ───────────────────────────────────────────────── */
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 32px; }
+  .checklist li {
+    display: flex; align-items: flex-start; gap: 12px;
+    background: var(--ink-03); border: 1px solid var(--ink-15);
+    border-radius: 8px; padding: 14px 16px;
+    cursor: pointer; transition: var(--transition);
+    user-select: none;
+  }
+  .checklist li:hover { border-color: var(--ink-30); box-shadow: var(--shadow-sm); }
+  .checklist li.checked { background: var(--ink-90); border-color: var(--ink-90); }
+  .checklist li.checked .check-box { background: rgba(255,255,255,.2); border-color: rgba(255,255,255,.4); }
+  .checklist li.checked .check-box i { opacity: 1; }
+  .checklist li.checked .check-text { color: rgba(255,255,255,.9); text-decoration: line-through; text-decoration-color: rgba(255,255,255,.3); }
+  .check-box {
+    width: 22px; height: 22px; flex-shrink: 0;
+    border: 2px solid var(--ink-30);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    transition: var(--transition);
+  }
+  .check-box i { font-size: 11px; color: #fff; opacity: 0; transition: opacity .2s; }
+  .check-text { font-size: 13px; color: var(--ink-70); line-height: 1.5; }
+
+  /* ── WEEK 3 TIMING LOG ───────────────────────────────────────── */
+  .timing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 32px; }
+  .timing-card {
+    background: var(--ink-03); border: 1px solid var(--ink-15);
+    border-radius: var(--radius); padding: 20px 16px;
+    transition: var(--transition);
+  }
+  .timing-card:hover { border-color: var(--ink-30); box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+  .timing-card-label { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-50); margin-bottom: 12px; }
+  .timing-field { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
+  .timing-field label { font-size: 11px; color: var(--ink-50); }
+  .timing-field input[type="text"], .timing-field input[type="date"], .timing-field select {
+    border: none; border-bottom: 1px solid var(--ink-15);
+    background: transparent; font-family: 'Outfit', sans-serif;
+    font-size: 13px; color: var(--ink-90); padding: 4px 2px;
+    outline: none; width: 100%; transition: border-color .2s;
+  }
+  .timing-field input:focus, .timing-field select:focus { border-bottom-color: var(--ink-90); }
+  .timing-check { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+  .timing-check input { display: none; }
+  .timing-check-box {
+    width: 20px; height: 20px;
+    border: 2px solid var(--ink-15); border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    transition: var(--transition);
+  }
+  .timing-check input:checked + .timing-check-box { background: var(--ink-90); border-color: var(--ink-90); }
+  .timing-check input:checked + .timing-check-box::after { content: '✓'; color: #fff; font-size: 11px; }
+  .timing-check-label { font-size: 12px; color: var(--ink-70); }
+
+  /* ── PROGRESSION COMPARE ─────────────────────────────────────── */
+  .prog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 32px; }
+  .prog-card {
+    background: var(--ink-03); border: 1px solid var(--ink-15);
+    border-radius: var(--radius); padding: 20px;
+    transition: var(--transition);
+  }
+  .prog-card:hover { border-color: var(--ink-30); box-shadow: var(--shadow-sm); }
+  .prog-card-title { font-weight: 600; color: var(--ink-90); font-size: 14px; margin-bottom: 12px; }
+  .prog-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .prog-row label { font-size: 11px; color: var(--ink-50); min-width: 50px; }
+  .prog-row input {
+    flex: 1; border: none; border-bottom: 1px solid var(--ink-15);
+    background: transparent; font-family: 'Outfit', sans-serif;
+    font-size: 13px; color: var(--ink-90); padding: 3px 2px; outline: none;
+    transition: border-color .2s;
+  }
+  .prog-row input:focus { border-bottom-color: var(--ink-90); }
+
+  /* ── DAY 30 REASSESSMENT ─────────────────────────────────────── */
+  .reassess-card {
+    background: var(--white); border: 1px solid var(--ink-15);
+    border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 20px;
+    box-shadow: var(--shadow-sm); transition: var(--transition);
+  }
+  .reassess-card:hover { box-shadow: var(--shadow-md); border-color: var(--ink-30); }
+  .reassess-q {
+    padding: 20px 24px;
+    font-size: 14px; font-weight: 500; color: var(--ink-90);
+    border-bottom: 1px solid var(--ink-06);
+    background: var(--ink-03);
+  }
+  .reassess-q-num { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-50); margin-bottom: 4px; }
+  .reassess-answers { display: grid; grid-template-columns: 1fr 1fr; }
+  .reassess-col { padding: 20px 24px; }
+  .reassess-col:first-child { border-right: 1px solid var(--ink-06); }
+  .reassess-col-label { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-50); margin-bottom: 12px; }
+  .toggle-group { display: flex; gap: 6px; }
+  .toggle-btn {
+    flex: 1; padding: 8px 4px;
+    border: 1px solid var(--ink-15); border-radius: 6px;
+    background: var(--white); color: var(--ink-50);
+    font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 500;
+    cursor: pointer; transition: var(--transition); text-align: center;
+  }
+  .toggle-btn:hover { border-color: var(--ink-30); color: var(--ink-90); }
+  .toggle-btn.sel-yes  { background: var(--ink-90); border-color: var(--ink-90); color: #fff; }
+  .toggle-btn.sel-sometimes { background: var(--ink-50); border-color: var(--ink-50); color: #fff; }
+  .toggle-btn.sel-no   { background: var(--ink-70); border-color: var(--ink-70); color: #fff; }
+
+  /* ── PROGRESS INDICATOR (Day 30) ─────────────────────────────── */
+  .result-bar {
+    background: var(--ink-03); border: 1px solid var(--ink-15);
+    border-radius: var(--radius); padding: 24px;
+    margin-bottom: 28px; text-align: center;
+  }
+  .result-score { font-family: 'Cormorant Garamond', serif; font-size: 56px; font-weight: 700; color: var(--ink-90); line-height: 1; }
+  .result-label { font-size: 13px; color: var(--ink-50); margin-top: 4px; }
+  .result-interpretation { font-size: 14px; color: var(--ink-70); margin-top: 12px; font-style: italic; }
+
+  /* ── INFO PANELS ─────────────────────────────────────────────── */
+  .info-panel {
+    background: var(--ink-90); color: rgba(255,255,255,.85);
+    border-radius: var(--radius); padding: 20px 24px;
+    margin-bottom: 28px; font-size: 13px; line-height: 1.65;
+  }
+  .info-panel strong { color: #fff; }
+  .info-panel-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+
+  /* ── DIVIDERS ────────────────────────────────────────────────── */
+  .divider { border: none; border-top: 1px solid var(--ink-15); margin: 28px 0; }
+
+  /* ── FOOTER ──────────────────────────────────────────────────── */
+  .site-footer {
+    background: var(--ink-90); color: rgba(255,255,255,.5);
+    padding: 32px;
+    margin-top: 80px;
+    text-align: center;
+    font-size: 12px;
+  }
+  .site-footer strong { color: rgba(255,255,255,.85); }
+
+  /* ── REVEAL ANIMATION ────────────────────────────────────────── */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── PRINT STYLES ────────────────────────────────────────────── */
+  @media print {
+    .site-header, .week-nav, .btn-print, .week-tab, body::after { display: none !important; }
+    .week-panel { display: block !important; border: none !important; box-shadow: none !important; padding: 0; margin: 0; }
+    .hero { background: #fff !important; color: #000 !important; padding: 20px 0; }
+    body { background: #fff; }
+    .phase-card, .exercise-card, .how-card, .timing-card, .prog-card { break-inside: avoid; }
+  }
+
+  /* ── RESPONSIVE ──────────────────────────────────────────────── */
+  @media (max-width: 700px) {
+    .site-header { padding: 0 16px; }
+    .hero { padding: 40px 16px 48px; }
+    .section { padding: 0 16px; }
+    .week-nav { padding-left: 16px; padding-right: 16px; }
+    .week-panel { margin-left: 16px; margin-right: 16px; padding: 24px 20px; }
+    .profile-strip-inner { grid-template-columns: 1fr; }
+    .phases-grid { grid-template-columns: 1fr 1fr; }
+    .how-grid { grid-template-columns: 1fr; }
+    .reassess-answers { grid-template-columns: 1fr; }
+    .reassess-col:first-child { border-right: none; border-bottom: 1px solid var(--ink-06); }
+    .timing-grid, .prog-grid { grid-template-columns: 1fr; }
+    .week-tab { font-size: 10px; padding: 10px 4px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══════════════════════════════════════════════════ -->
+<header class="site-header">
+  <a class="logo-mark" href="#">
+    <div class="logo-box"><i class="fa-solid fa-bolt"></i></div>
+    <div class="logo-text">
+      <span class="logo-name">Muscle-Meta Matrix™</span>
+      <span class="logo-sub">Osteosarcopenia Protocol</span>
+    </div>
+  </a>
+  <div class="header-actions">
+    <button class="btn-icon" title="Reset all data" onclick="resetAll()"><i class="fa-solid fa-rotate-left"></i></button>
+    <button class="btn-print" onclick="window.print()"><i class="fa-solid fa-print"></i> Print Workbook</button>
+  </div>
+</header>
+
+<!-- ══ HERO ════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="badge badge-outline">30-Day Protocol</span>
+      <span class="badge badge-solid">Three-Email Course</span>
+    </div>
+    <h1>The Osteosarcopenia Protocol<br>30-Day Action Plan Workbook</h1>
+    <p class="hero-subtitle">A phased, progressive framework synchronizing resistance training and protein signaling to combat compound bone-muscle loss in adults 45+.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Author</span>
+        <span class="hero-meta-value">Randy Bauer, PT</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Platform</span>
+        <span class="hero-meta-value">Muscle-Meta Matrix™</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Duration</span>
+        <span class="hero-meta-value">30 Days · 4 Phases</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Contact</span>
+        <span class="hero-meta-value">rbauer@bauerpt.com</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROFILE STRIP ════════════════════════════════════════════ -->
+<div class="profile-strip">
+  <div class="profile-strip-inner">
+    <div class="profile-field">
+      <label>Your Name</label>
+      <input type="text" id="pf-name" placeholder="Enter name" oninput="saveProfile()">
+    </div>
+    <div class="profile-field">
+      <label>Start Date</label>
+      <input type="date" id="pf-start" oninput="saveProfile()">
+    </div>
+    <div class="profile-field">
+      <label>End Date (Day 30)</label>
+      <input type="date" id="pf-end" oninput="saveProfile()">
+    </div>
+  </div>
+</div>
+
+<!-- ══ PHASE OVERVIEW ═══════════════════════════════════════════ -->
+<div style="margin-top:56px;">
+  <div class="section">
+    <div class="panel-section-title reveal"><i class="fa-solid fa-map"></i> Protocol Overview</div>
+    <div class="phases-grid">
+      <div class="phase-card reveal" onclick="switchTab(0)">
+        <div class="phase-number">01</div>
+        <div class="phase-days">Days 1–7</div>
+        <div class="phase-title">Establish the Baseline</div>
+        <div class="phase-tags">
+          <div class="phase-tag"><i class="fa-solid fa-circle"></i> Tier 1 only · 2× / week</div>
+          <div class="phase-tag"><i class="fa-solid fa-circle"></i> Map protein intake</div>
+          <div class="phase-tag"><i class="fa-solid fa-circle"></i> Observe before changing</div>
+        </div>
+      </div>
+      <div class="phase-card reveal" onclick="switchTab(1)">
+        <div class="phase-number">02</div>
+        <div class="phase-days">Days 8–14</div>
+        <div class="phase-title">Anchor the Protein Signal</div>
+        <div class="phase-tags">
+          <div class="phase-tag"><i class="fa-solid fa-circle"></i> Tier 1 + 2 · 2–3× / week</div>
+          <div class="phase-tag"><i class="fa-solid fa-circle"></i> 25–35g per meal</div>
+          <div class="phase-tag"><i class="fa-solid fa-circle"></i> Establish working loads</div>
+        </div>
+      </div>
+      <div class="phase-card reveal" onclick="switchTab(2)">
+        <div class="phase-number">03</div>
+        <div class="phase-days">Days 15–21</div>
+        <div class="phase-title">Synchronize the Signals</div>
+        <div class="phase-tags">
+          <div class="phase-tag"><i class="fa-solid fa-circle"></i> All 3 tiers · 3× / week</div>
+          <div class="phase-tag"><i class="fa-solid fa-circle"></i> Post-workout protein ≤2h</div>
+          <div class="phase-tag"><i class="fa-solid fa-circle"></i> Log progressive loads</div>
+        </div>
+      </div>
+      <div class="phase-card reveal" onclick="switchTab(3)">
+        <div class="phase-number">04</div>
+        <div class="phase-days">Days 22–30</div>
+        <div class="phase-title">Compound & Assess</div>
+        <div class="phase-tags">
+          <div class="phase-tag"><i class="fa-solid fa-circle"></i> Full protocol · 3× / week</div>
+          <div class="phase-tag"><i class="fa-solid fa-circle"></i> 5% progressive overload</div>
+          <div class="phase-tag"><i class="fa-solid fa-circle"></i> Day 30 reassessment</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOW TO USE -->
+    <div class="panel-section-title reveal" style="margin-top:40px;"><i class="fa-solid fa-circle-info"></i> How to Use This Workbook</div>
+    <div class="how-grid">
+      <div class="how-card reveal">
+        <div class="how-icon"><i class="fa-solid fa-dumbbell"></i></div>
+        <div class="how-body"><h4>After Each Session</h4><p>Complete the movement log — record sets, reps, and weight for every exercise in that session.</p></div>
+      </div>
+      <div class="how-card reveal">
+        <div class="how-icon"><i class="fa-solid fa-utensils"></i></div>
+        <div class="how-body"><h4>Daily Nutrition</h4><p>Fill the protein tracker every day. Each meal column needs a gram total. Flag post-training meals with a check.</p></div>
+      </div>
+      <div class="how-card reveal">
+        <div class="how-icon"><i class="fa-solid fa-list-check"></i></div>
+        <div class="how-body"><h4>Weekly Checklist</h4><p>Use the weekly checklist to confirm protocol actions. Click each item when complete — it saves automatically.</p></div>
+      </div>
+      <div class="how-card reveal">
+        <div class="how-icon"><i class="fa-solid fa-rotate"></i></div>
+        <div class="how-body"><h4>Day 30 Reassessment</h4><p>Return to Week 4 tab. Answer the same 5 baseline questions and compare your Day 1 vs Day 30 responses.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ WEEK TABS ════════════════════════════════════════════════ -->
+<div class="week-nav">
+  <button class="week-tab active" onclick="switchTab(0)">Week 1<br><small>Days 1–7</small></button>
+  <button class="week-tab"       onclick="switchTab(1)">Week 2<br><small>Days 8–14</small></button>
+  <button class="week-tab"       onclick="switchTab(2)">Week 3<br><small>Days 15–21</small></button>
+  <button class="week-tab"       onclick="switchTab(3)">Week 4<br><small>Days 22–30</small></button>
+</div>
+
+<!-- ══ WEEK 1 ══════════════════════════════════════════════════ -->
+<div class="week-panel active" id="panel-0">
+  <div class="week-header">
+    <div class="week-title-block">
+      <div class="week-phase-label">Phase 1 · Days 1–7</div>
+      <div class="week-title">Establish the Baseline</div>
+      <div class="week-subtitle">Tier 1 only · 2× this week · Focus: movement quality, no load added</div>
+    </div>
+    <div class="week-progress-wrap">
+      <div class="week-progress-bar"><div class="week-progress-fill" style="width:25%"></div></div>
+      <div class="week-progress-label">Week 1 of 4</div>
+    </div>
+  </div>
+
+  <!-- Exercises -->
+  <div class="panel-section-title"><i class="fa-solid fa-dumbbell"></i> Tier 1 Movements</div>
+  <div class="exercise-cards">
+    <div class="exercise-card"><div class="exercise-num">01</div><div class="exercise-name">Bodyweight Squat</div><div class="exercise-target">Target: 3 × 10–12</div></div>
+    <div class="exercise-card"><div class="exercise-num">02</div><div class="exercise-name">Hip Hinge</div><div class="exercise-target">Target: 3 × 10</div></div>
+    <div class="exercise-card"><div class="exercise-num">03</div><div class="exercise-name">Incline / Wall Push-Up</div><div class="exercise-target">Target: 3 × 8–10</div></div>
+    <div class="exercise-card"><div class="exercise-num">04</div><div class="exercise-name">Band / Cable Row</div><div class="exercise-target">Target: 3 × 10–12</div></div>
+  </div>
+
+  <!-- Movement Log -->
+  <div class="panel-section-title"><i class="fa-solid fa-table"></i> Movement Log</div>
+  <div class="log-table-wrap">
+    <table class="log-table" id="log-w1">
+      <thead>
+        <tr>
+          <th>Movement</th>
+          <th>Session 1 · Sets × Reps @ Weight</th>
+          <th>Session 2 · Sets × Reps @ Weight</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Bodyweight Squat</td><td><input type="text" placeholder="e.g. 3 × 12 @ BW" oninput="autosave()"></td><td><input type="text" placeholder="e.g. 3 × 12 @ BW" oninput="autosave()"></td></tr>
+        <tr><td>Hip Hinge</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Incline / Wall Push-Up</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Band / Cable Row</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Nutrition -->
+  <div class="panel-section-title"><i class="fa-solid fa-utensils"></i> Daily Protein Mapping</div>
+  <p style="font-size:13px;color:var(--ink-50);margin-bottom:16px;">Observe current intake — do not change yet. Record grams per meal.</p>
+  <div class="log-table-wrap">
+    <table class="nutrition-table" id="nutr-w1">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Breakfast (g)</th>
+          <th>Lunch (g)</th>
+          <th>Dinner (g)</th>
+          <th>Daily Total</th>
+        </tr>
+      </thead>
+      <tbody id="nutr-w1-body"></tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Checklist -->
+  <div class="panel-section-title"><i class="fa-solid fa-list-check"></i> Week 1 Checklist</div>
+  <ul class="checklist" id="cl-w1">
+    <li onclick="toggleCheck(this)"><div class="check-box"><i class="fa-solid fa-check"></i></div><span class="check-text">Complete Tier 1 Session 1 (Days 1–3): Bodyweight Squat, Hip Hinge, Push-Up, Band Row — 3 sets each</span></li>
+    <li onclick="toggleCheck(this)"><div class="check-box"><i class="fa-solid fa-check"></i></div><span class="check-text">Complete Tier 1 Session 2 (Days 4–7): Focus on depth, control, and full range of motion</span></li>
+    <li onclick="toggleCheck(this)"><div class="check-box"><i class="fa-solid fa-check"></i></div><span class="check-text">Map protein intake for all 7 days — note which meals fall below 25g protein</span></li>
+    <li onclick="toggleCheck(this)"><div class="check-box"><i class="fa-solid fa-check"></i></div><span class="check-text">Confirm D3, K2, and Magnesium supplementation status — begin daily if not already in place</span></li>
+    <li onclick="toggleCheck(this)"><div class="check-box"><i class="fa-solid fa-check"></i></div><span class="check-text">Re-read Section 4 of your Protocol Guide — record your 5 baseline checklist responses</span></li>
+  </ul>
+</div>
+
+<!-- ══ WEEK 2 ══════════════════════════════════════════════════ -->
+<div class="week-panel" id="panel-1">
+  <div class="week-header">
+    <div class="week-title-block">
+      <div class="week-phase-label">Phase 2 · Days 8–14</div>
+      <div class="week-title">Anchor the Protein Signal</div>
+      <div class="week-subtitle">Tier 1 + Tier 2 · 2–3× this week · Introduce resistance, establish 70–75% working loads</div>
+    </div>
+    <div class="week-progress-wrap">
+      <div class="week-progress-bar"><div class="week-progress-fill" style="width:50%"></div></div>
+      <div class="week-progress-label">Week 2 of 4</div>
+    </div>
+  </div>
+
+  <div class="panel-section-title"><i class="fa-solid fa-dumbbell"></i> Tier 1 + Tier 2 Movements</div>
+  <div class="exercise-cards">
+    <div class="exercise-card"><div class="exercise-num">01</div><div class="exercise-name">Bodyweight Squat</div><div class="exercise-target">3 × 10–12</div></div>
+    <div class="exercise-card"><div class="exercise-num">02</div><div class="exercise-name">Hip Hinge</div><div class="exercise-target">3 × 10</div></div>
+    <div class="exercise-card"><div class="exercise-num">03</div><div class="exercise-name">Incline / Wall Push-Up</div><div class="exercise-target">3 × 8–10</div></div>
+    <div class="exercise-card"><div class="exercise-num">04</div><div class="exercise-name">Band / Cable Row</div><div class="exercise-target">3 × 10–12</div></div>
+    <div class="exercise-card" style="border-color:var(--ink-30)"><div class="exercise-num">05 · NEW</div><div class="exercise-name">Goblet Squat</div><div class="exercise-target">3 × 8–10</div></div>
+    <div class="exercise-card" style="border-color:var(--ink-30)"><div class="exercise-num">06 · NEW</div><div class="exercise-name">Trap Bar / DB Deadlift</div><div class="exercise-target">3 × 6–8</div></div>
+    <div class="exercise-card" style="border-color:var(--ink-30)"><div class="exercise-num">07 · NEW</div><div class="exercise-name">DB Overhead Press</div><div class="exercise-target">3 × 8–10</div></div>
+    <div class="exercise-card" style="border-color:var(--ink-30)"><div class="exercise-num">08 · NEW</div><div class="exercise-name">Split Squat</div><div class="exercise-target">3 × 8 / leg</div></div>
+  </div>
+
+  <div class="panel-section-title"><i class="fa-solid fa-table"></i> Movement Log</div>
+  <div class="log-table-wrap">
+    <table class="log-table">
+      <thead>
+        <tr><th>Movement</th><th>Session 1</th><th>Session 2</th><th>Session 3</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Bodyweight Squat</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Hip Hinge</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Incline / Wall Push-Up</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Band / Cable Row</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Goblet Squat</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Trap Bar / DB Deadlift</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>DB Overhead Press</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Split Squat</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <div class="panel-section-title"><i class="fa-solid fa-utensils"></i> Protein Distribution Tracker</div>
+  <p style="font-size:13px;color:var(--ink-50);margin-bottom:16px;">Redistribute to 25–35g per meal. Check ✓ post-training meals.</p>
+  <div class="log-table-wrap">
+    <table class="nutrition-table" id="nutr-w2">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Breakfast (g)</th>
+          <th>Lunch (g)</th>
+          <th>Dinner (g)</th>
+          <th>Post-Training ✓</th>
+          <th>Daily Total</th>
+        </tr>
+      </thead>
+      <tbody id="nutr-w2-body"></tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <div class="panel-section-title"><i class="fa-solid fa-list-check"></i> Week 2 Checklist</div>
+  <ul class="checklist">
+    <li onclick="toggleCheck(this)"><div class="check-box"><i class="fa-solid fa-check"></i></div><span class="check-text">Redistribute protein to 25–35g per meal — use the Leucine Reference Card to select sources</span></li>
+    <li onclick="toggleCheck(this)"><div class="check-box"><i class="fa-solid fa-check"></i></div><span class="check-text">Record working loads for all Tier 2 movements — these become your Week 4 progressive overload baseline</span></li>
+    <li onclick="toggleCheck(this)"><div class="check-box"><i class="fa-solid fa-check"></i></div><span class="check-text">Complete 2–3 sessions (minimum 2 if new to loaded work) — Tier 2 sets should feel challenging at rep 5–6</span></li>
+    <li onclick="toggleCheck(this)"><div class="check-box"><i class="fa-solid fa-check"></i></div><span class="check-text">Confirm each meal independently crosses 25g protein — do not concentrate total protein at dinner</span></li>
+  </ul>
+</div>
+
+<!-- ══ WEEK 3 ══════════════════════════════════════════════════ -->
+<div class="week-panel" id="panel-2">
+  <div class="week-header">
+    <div class="week-title-block">
+      <div class="week-phase-label">Phase 3 · Days 15–21</div>
+      <div class="week-title">Synchronize the Signals</div>
+      <div class="week-subtitle">All 3 tiers · 3× this week · 2 load sessions (T1+T2) + 1 power session (T1+T3)</div>
+    </div>
+    <div class="week-progress-wrap">
+      <div class="week-progress-bar"><div class="week-progress-fill" style="width:75%"></div></div>
+      <div class="week-progress-label">Week 3 of 4</div>
+    </div>
+  </div>
+
+  <div class="panel-section-title"><i class="fa-solid fa-dumbbell"></i> All Tiers (12 Movements)</div>
+  <div class="exercise-cards">
+    <div class="exercise-card"><div class="exercise-num">01</div><div class="exercise-name">Bodyweight Squat</div><div class="exercise-target">3 × 10–12</div></div>
+    <div class="exercise-card"><div class="exercise-num">02</div><div class="exercise-name">Hip Hinge</div><div class="exercise-target">3 × 10</div></div>
+    <div class="exercise-card"><div class="exercise-num">03</div><div class="exercise-name">Incline / Wall Push-Up</div><div class="exercise-target">3 × 8–10</div></div>
+    <div class="exercise-card"><div class="exercise-num">04</div><div class="exercise-name">Band / Cable Row</div><div class="exercise-target">3 × 10–12</div></div>
+    <div class="exercise-card"><div class="exercise-num">05</div><div class="exercise-name">Goblet Squat</div><div class="exercise-target">3 × 8–10</div></div>
+    <div class="exercise-card"><div class="exercise-num">06</div><div class="exercise-name">Trap Bar / DB Deadlift</div><div class="exercise-target">3 × 6–8</div></div>
+    <div class="exercise-card"><div class="exercise-num">07</div><div class="exercise-name">DB Overhead Press</div><div class="exercise-target">3 × 8–10</div></div>
+    <div class="exercise-card"><div class="exercise-num">08</div><div class="exercise-name">Split Squat</div><div class="exercise-target">3 × 8 / leg</div></div>
+    <div class="exercise-card" style="border-color:var(--ink-30)"><div class="exercise-num">09 · NEW</div><div class="exercise-name">Squat to Press</div><div class="exercise-target">3 × 6</div></div>
+    <div class="exercise-card" style="border-color:var(--ink-30)"><div class="exercise-num">10 · NEW</div><div class="exercise-name">Step-Up w/ Knee Drive</div><div class="exercise-target">3 × 8 / leg</div></div>
+    <div class="exercise-card" style="border-color:var(--ink-30)"><div class="exercise-num">11 · NEW</div><div class="exercise-name">Medicine Ball Wall Press</div><div class="exercise-target">3 × 6–8</div></div>
+    <div class="exercise-card" style="border-color:var(--ink-30)"><div class="exercise-num">12 · NEW</div><div class="exercise-name">Farmer Carry</div><div class="exercise-target">3 × 20–30m</div></div>
+  </div>
+
+  <div class="panel-section-title"><i class="fa-solid fa-table"></i> Movement Log</div>
+  <div class="log-table-wrap">
+    <table class="log-table">
+      <thead>
+        <tr><th>Movement</th><th>Session 1</th><th>Session 2</th><th>Session 3 (Power)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Bodyweight Squat</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Hip Hinge</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Incline / Wall Push-Up</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Band / Cable Row</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Goblet Squat</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Trap Bar / DB Deadlift</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>DB Overhead Press</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Split Squat</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Squat to Press</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Step-Up w/ Knee Drive</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Medicine Ball Wall Press</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Farmer Carry</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <div class="panel-section-title"><i class="fa-solid fa-clock"></i> Post-Workout Protein Timing Log</div>
+  <p style="font-size:13px;color:var(--ink-50);margin-bottom:16px;">Target: leucine-rich meal within 2 hours of each session.</p>
+  <div class="timing-grid">
+    <div class="timing-card">
+      <div class="timing-card-label">Session 1</div>
+      <div class="timing-field"><label>Date</label><input type="date"></div>
+      <div class="timing-field"><label>Leucine Source</label><input type="text" placeholder="e.g. Whey protein, chicken"></div>
+      <div class="timing-field"><label>Protein Grams</label><input type="text" placeholder="g"></div>
+      <label class="timing-check"><input type="checkbox"><div class="timing-check-box"></div><span class="timing-check-label">Protein within 2 hrs ✓</span></label>
+    </div>
+    <div class="timing-card">
+      <div class="timing-card-label">Session 2</div>
+      <div class="timing-field"><label>Date</label><input type="date"></div>
+      <div class="timing-field"><label>Leucine Source</label><input type="text" placeholder="e.g. Greek yogurt, eggs"></div>
+      <div class="timing-field"><label>Protein Grams</label><input type="text" placeholder="g"></div>
+      <label class="timing-check"><input type="checkbox"><div class="timing-check-box"></div><span class="timing-check-label">Protein within 2 hrs ✓</span></label>
+    </div>
+    <div class="timing-card">
+      <div class="timing-card-label">Session 3 (Power)</div>
+      <div class="timing-field"><label>Date</label><input type="date"></div>
+      <div class="timing-field"><label>Leucine Source</label><input type="text" placeholder="e.g. Cottage cheese, tuna"></div>
+      <div class="timing-field"><label>Protein Grams</label><input type="text" placeholder="g"></div>
+      <label class="timing-check"><input type="checkbox"><div class="timing-check-box"></div><span class="timing-check-label">Protein within 2 hrs ✓</span></label>
+    </div>
+  </div>
+
+  <div class="panel-section-title"><i class="fa-solid fa-chart-line"></i> Progression Check — Compare to Week 2 Loads</div>
+  <div class="prog-grid">
+    <div class="prog-card">
+      <div class="prog-card-title">Goblet Squat</div>
+      <div class="prog-row"><label>Wk 2</label><input type="text" placeholder="e.g. 3 × 10 @ 20 lb"></div>
+      <div class="prog-row"><label>Wk 3</label><input type="text" placeholder="e.g. 3 × 10 @ 25 lb"></div>
+    </div>
+    <div class="prog-card">
+      <div class="prog-card-title">Trap Bar / DB Deadlift</div>
+      <div class="prog-row"><label>Wk 2</label><input type="text" placeholder="e.g. 3 × 8 @ 40 lb"></div>
+      <div class="prog-row"><label>Wk 3</label><input type="text" placeholder="e.g. 3 × 8 @ 45 lb"></div>
+    </div>
+    <div class="prog-card">
+      <div class="prog-card-title">DB Overhead Press</div>
+      <div class="prog-row"><label>Wk 2</label><input type="text" placeholder="—"></div>
+      <div class="prog-row"><label>Wk 3</label><input type="text" placeholder="—"></div>
+    </div>
+    <div class="prog-card">
+      <div class="prog-card-title">Split Squat</div>
+      <div class="prog-row"><label>Wk 2</label><input type="text" placeholder="—"></div>
+      <div class="prog-row"><label>Wk 3</label><input type="text" placeholder="—"></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="panel-section-title"><i class="fa-solid fa-list-check"></i> Week 3 Checklist</div>
+  <ul class="checklist">
+    <li onclick="toggleCheck(this)"><div class="check-box"><i class="fa-solid fa-check"></i></div><span class="check-text">Complete all 3 sessions: 2 load sessions (Tier 1+2) and 1 power session (Tier 1+3)</span></li>
+    <li onclick="toggleCheck(this)"><div class="check-box"><i class="fa-solid fa-check"></i></div><span class="check-text">Log post-workout protein timing for all 3 sessions — target leucine-rich meal within 2 hours</span></li>
+    <li onclick="toggleCheck(this)"><div class="check-box"><i class="fa-solid fa-check"></i></div><span class="check-text">Complete Week 2 vs Week 3 load progression comparison for all 4 key movements</span></li>
+    <li onclick="toggleCheck(this)"><div class="check-box"><i class="fa-solid fa-check"></i></div><span class="check-text">Confirm protein distribution is independently crossing 25g per meal — not stacked at one sitting</span></li>
+  </ul>
+</div>
+
+<!-- ══ WEEK 4 ══════════════════════════════════════════════════ -->
+<div class="week-panel" id="panel-3">
+  <div class="week-header">
+    <div class="week-title-block">
+      <div class="week-phase-label">Phase 4 · Days 22–30</div>
+      <div class="week-title">Compound & Assess</div>
+      <div class="week-subtitle">Full protocol · 3× this week · Apply 5% progressive overload where top-end reps feel controlled</div>
+    </div>
+    <div class="week-progress-wrap">
+      <div class="week-progress-bar"><div class="week-progress-fill" style="width:100%"></div></div>
+      <div class="week-progress-label">Week 4 of 4</div>
+    </div>
+  </div>
+
+  <div class="info-panel">
+    <div class="info-panel-title"><i class="fa-solid fa-bolt" style="margin-right:8px;"></i>Progressive Overload Rule</div>
+    Apply a <strong>5% load increase</strong> on any movement where the top end of your rep range felt fully controlled last week. If form breaks down even slightly, hold the load and accumulate quality reps before increasing.
+  </div>
+
+  <div class="panel-section-title"><i class="fa-solid fa-dumbbell"></i> Full Protocol (12 Movements)</div>
+  <div class="exercise-cards">
+    <div class="exercise-card"><div class="exercise-num">01</div><div class="exercise-name">Bodyweight Squat</div><div class="exercise-target">3 × 10–12</div></div>
+    <div class="exercise-card"><div class="exercise-num">02</div><div class="exercise-name">Hip Hinge</div><div class="exercise-target">3 × 10</div></div>
+    <div class="exercise-card"><div class="exercise-num">03</div><div class="exercise-name">Incline / Wall Push-Up</div><div class="exercise-target">3 × 8–10</div></div>
+    <div class="exercise-card"><div class="exercise-num">04</div><div class="exercise-name">Band / Cable Row</div><div class="exercise-target">3 × 10–12</div></div>
+    <div class="exercise-card"><div class="exercise-num">05</div><div class="exercise-name">Goblet Squat</div><div class="exercise-target">3 × 8–10</div></div>
+    <div class="exercise-card"><div class="exercise-num">06</div><div class="exercise-name">Trap Bar / DB Deadlift</div><div class="exercise-target">3 × 6–8</div></div>
+    <div class="exercise-card"><div class="exercise-num">07</div><div class="exercise-name">DB Overhead Press</div><div class="exercise-target">3 × 8–10</div></div>
+    <div class="exercise-card"><div class="exercise-num">08</div><div class="exercise-name">Split Squat</div><div class="exercise-target">3 × 8 / leg</div></div>
+    <div class="exercise-card"><div class="exercise-num">09</div><div class="exercise-name">Squat to Press</div><div class="exercise-target">3 × 6</div></div>
+    <div class="exercise-card"><div class="exercise-num">10</div><div class="exercise-name">Step-Up w/ Knee Drive</div><div class="exercise-target">3 × 8 / leg</div></div>
+    <div class="exercise-card"><div class="exercise-num">11</div><div class="exercise-name">Medicine Ball Wall Press</div><div class="exercise-target">3 × 6–8</div></div>
+    <div class="exercise-card"><div class="exercise-num">12</div><div class="exercise-name">Farmer Carry</div><div class="exercise-target">3 × 20–30m</div></div>
+  </div>
+
+  <div class="panel-section-title"><i class="fa-solid fa-table"></i> Movement Log</div>
+  <div class="log-table-wrap">
+    <table class="log-table">
+      <thead>
+        <tr><th>Movement</th><th>Session 1</th><th>Session 2</th><th>Session 3</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Bodyweight Squat</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Hip Hinge</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Incline / Wall Push-Up</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Band / Cable Row</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Goblet Squat</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Trap Bar / DB Deadlift</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>DB Overhead Press</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Split Squat</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Squat to Press</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Step-Up w/ Knee Drive</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Medicine Ball Wall Press</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+        <tr><td>Farmer Carry</td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td><td><input type="text" placeholder="—" oninput="autosave()"></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <!-- DAY 30 REASSESSMENT -->
+  <div class="panel-section-title" style="margin-bottom:8px;"><i class="fa-solid fa-clipboard-check"></i> Day 30 Reassessment</div>
+  <p style="font-size:13px;color:var(--ink-50);margin-bottom:28px;">Return to Section 4 of your Protocol Guide. Answer the same 5 questions — record both your Day 1 and Day 30 responses below. Your score updates live.</p>
+
+  <div class="result-bar">
+    <div class="result-score" id="score-display">—</div>
+    <div class="result-label">Improvement Score (YES responses reduced)</div>
+    <div class="result-interpretation" id="score-interp">Select your Day 1 and Day 30 responses to see your progress interpretation.</div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="reassess-card">
+    <div class="reassess-q">
+      <div class="reassess-q-num">Question 01</div>
+      When getting up from a low chair or floor, do you use your arms to push up or need a moment to steady yourself?
+    </div>
+    <div class="reassess-answers">
+      <div class="reassess-col">
+        <div class="reassess-col-label">Day 1 Response</div>
+        <div class="toggle-group" data-q="1" data-day="1">
+          <button class="toggle-btn" onclick="selectToggle(this,'yes','1','1')">YES</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'sometimes','1','1')">SOMETIMES</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'no','1','1')">NO</button>
+        </div>
+      </div>
+      <div class="reassess-col">
+        <div class="reassess-col-label">Day 30 Response</div>
+        <div class="toggle-group" data-q="1" data-day="30">
+          <button class="toggle-btn" onclick="selectToggle(this,'yes','1','30')">YES</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'sometimes','1','30')">SOMETIMES</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'no','1','30')">NO</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="reassess-card">
+    <div class="reassess-q">
+      <div class="reassess-q-num">Question 02</div>
+      Has your body felt softer or less firm, even without significant weight change?
+    </div>
+    <div class="reassess-answers">
+      <div class="reassess-col">
+        <div class="reassess-col-label">Day 1 Response</div>
+        <div class="toggle-group" data-q="2" data-day="1">
+          <button class="toggle-btn" onclick="selectToggle(this,'yes','2','1')">YES</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'sometimes','2','1')">SOMETIMES</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'no','2','1')">NO</button>
+        </div>
+      </div>
+      <div class="reassess-col">
+        <div class="reassess-col-label">Day 30 Response</div>
+        <div class="toggle-group" data-q="2" data-day="30">
+          <button class="toggle-btn" onclick="selectToggle(this,'yes','2','30')">YES</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'sometimes','2','30')">SOMETIMES</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'no','2','30')">NO</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="reassess-card">
+    <div class="reassess-q">
+      <div class="reassess-q-num">Question 03</div>
+      Do you hesitate before stepping off a curb, uneven ground, or down stairs?
+    </div>
+    <div class="reassess-answers">
+      <div class="reassess-col">
+        <div class="reassess-col-label">Day 1 Response</div>
+        <div class="toggle-group" data-q="3" data-day="1">
+          <button class="toggle-btn" onclick="selectToggle(this,'yes','3','1')">YES</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'sometimes','3','1')">SOMETIMES</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'no','3','1')">NO</button>
+        </div>
+      </div>
+      <div class="reassess-col">
+        <div class="reassess-col-label">Day 30 Response</div>
+        <div class="toggle-group" data-q="3" data-day="30">
+          <button class="toggle-btn" onclick="selectToggle(this,'yes','3','30')">YES</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'sometimes','3','30')">SOMETIMES</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'no','3','30')">NO</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="reassess-card">
+    <div class="reassess-q">
+      <div class="reassess-q-num">Question 04</div>
+      Do you typically consume less than 25–30g of protein at your main meal?
+    </div>
+    <div class="reassess-answers">
+      <div class="reassess-col">
+        <div class="reassess-col-label">Day 1 Response</div>
+        <div class="toggle-group" data-q="4" data-day="1">
+          <button class="toggle-btn" onclick="selectToggle(this,'yes','4','1')">YES</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'sometimes','4','1')">SOMETIMES</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'no','4','1')">NO</button>
+        </div>
+      </div>
+      <div class="reassess-col">
+        <div class="reassess-col-label">Day 30 Response</div>
+        <div class="toggle-group" data-q="4" data-day="30">
+          <button class="toggle-btn" onclick="selectToggle(this,'yes','4','30')">YES</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'sometimes','4','30')">SOMETIMES</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'no','4','30')">NO</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="reassess-card">
+    <div class="reassess-q">
+      <div class="reassess-q-num">Question 05</div>
+      In the last 6 months, have you scaled back a physical activity due to pain, fatigue, or concern about falling?
+    </div>
+    <div class="reassess-answers">
+      <div class="reassess-col">
+        <div class="reassess-col-label">Day 1 Response</div>
+        <div class="toggle-group" data-q="5" data-day="1">
+          <button class="toggle-btn" onclick="selectToggle(this,'yes','5','1')">YES</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'sometimes','5','1')">SOMETIMES</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'no','5','1')">NO</button>
+        </div>
+      </div>
+      <div class="reassess-col">
+        <div class="reassess-col-label">Day 30 Response</div>
+        <div class="toggle-group" data-q="5" data-day="30">
+          <button class="toggle-btn" onclick="selectToggle(this,'yes','5','30')">YES</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'sometimes','5','30')">SOMETIMES</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'no','5','30')">NO</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="panel-section-title"><i class="fa-solid fa-list-check"></i> Week 4 Checklist</div>
+  <ul class="checklist">
+    <li onclick="toggleCheck(this)"><div class="check-box"><i class="fa-solid fa-check"></i></div><span class="check-text">Complete all 3 sessions with the full 12-movement protocol</span></li>
+    <li onclick="toggleCheck(this)"><div class="check-box"><i class="fa-solid fa-check"></i></div><span class="check-text">Apply 5% progressive overload where top-end reps felt fully controlled</span></li>
+    <li onclick="toggleCheck(this)"><div class="check-box"><i class="fa-solid fa-check"></i></div><span class="check-text">Complete Day 30 Reassessment — record all 5 question responses above</span></li>
+    <li onclick="toggleCheck(this)"><div class="check-box"><i class="fa-solid fa-check"></i></div><span class="check-text">Continue protein timing protocol: leucine-rich source within 2 hours of each session</span></li>
+  </ul>
+</div>
+
+<!-- ══ FOOTER ══════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <strong>Muscle-Meta Matrix™</strong> · The Osteosarcopenia Protocol · 30-Day Action Plan Workbook<br>
+  Randy Bauer, PT · <a href="mailto:rbauer@bauerpt.com" style="color:rgba(255,255,255,.55);">rbauer@bauerpt.com</a><br>
+  <span style="margin-top:6px;display:block;font-size:11px;">Small Steps. Exponential Gains.™</span>
+</footer>
+
+<!-- ══ JAVASCRIPT ══════════════════════════════════════════════ -->
+<script>
+// ── DATA STORE ──────────────────────────────────────────────────
+const reassessData = { day1: {}, day30: {} };
+
+// ── NUTRITION TABLE BUILDER ─────────────────────────────────────
+function buildNutritionTable(tbodyId, startDay, endDay, hasPostTraining) {
+  const tbody = document.getElementById(tbodyId);
+  if (!tbody) return;
+  for (let d = startDay; d <= endDay; d++) {
+    const tr = document.createElement('tr');
+    const cells = hasPostTraining
+      ? `<td>Day ${d}</td>
+         <td><input type="number" min="0" max="200" placeholder="—" oninput="calcTotal(this)"></td>
+         <td><input type="number" min="0" max="200" placeholder="—" oninput="calcTotal(this)"></td>
+         <td><input type="number" min="0" max="200" placeholder="—" oninput="calcTotal(this)"></td>
+         <td><label style="cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;">
+           <input type="checkbox" style="accent-color:#1a1a1a;width:16px;height:16px;"><span style="font-size:12px;color:var(--ink-50);">✓</span>
+         </label></td>
+         <td class="daily-total-cell" id="tot-${tbodyId}-${d}">—</td>`
+      : `<td>Day ${d}</td>
+         <td><input type="number" min="0" max="200" placeholder="—" oninput="calcTotal(this)"></td>
+         <td><input type="number" min="0" max="200" placeholder="—" oninput="calcTotal(this)"></td>
+         <td><input type="number" min="0" max="200" placeholder="—" oninput="calcTotal(this)"></td>
+         <td class="daily-total-cell" id="tot-${tbodyId}-${d}">—</td>`;
+    tr.innerHTML = cells;
+    tbody.appendChild(tr);
+  }
+}
+
+function calcTotal(input) {
+  const row = input.closest('tr');
+  const nums = [...row.querySelectorAll('input[type="number"]')];
+  const sum = nums.reduce((s, i) => s + (parseFloat(i.value) || 0), 0);
+  const totalCell = row.querySelector('.daily-total-cell');
+  if (totalCell) totalCell.textContent = sum > 0 ? sum + 'g' : '—';
+}
+
+// ── TABS ─────────────────────────────────────────────────────────
+function switchTab(idx) {
+  document.querySelectorAll('.week-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
+  document.querySelectorAll('.week-panel').forEach((p, i) => p.classList.toggle('active', i === idx));
+  // Scroll to tabs
+  document.querySelector('.week-nav').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ── CHECKLIST ────────────────────────────────────────────────────
+function toggleCheck(li) {
+  li.classList.toggle('checked');
+}
+
+// ── REASSESSMENT SCORING ─────────────────────────────────────────
+function selectToggle(btn, val, q, day) {
+  const group = btn.closest('.toggle-group');
+  group.querySelectorAll('.toggle-btn').forEach(b => b.className = 'toggle-btn');
+  btn.classList.add('sel-' + val);
+
+  const store = day === '1' ? reassessData.day1 : reassessData.day30;
+  store[q] = val;
+  updateScore();
+}
+
+function scoreOf(obj) {
+  return Object.values(obj).reduce((s, v) => s + (v === 'yes' ? 2 : v === 'sometimes' ? 1 : 0), 0);
+}
+
+function updateScore() {
+  const d1 = scoreOf(reassessData.day1);
+  const d30 = scoreOf(reassessData.day30);
+  const hasAll = Object.keys(reassessData.day1).length === 5 && Object.keys(reassessData.day30).length === 5;
+
+  const disp = document.getElementById('score-display');
+  const interp = document.getElementById('score-interp');
+
+  if (!hasAll) { disp.textContent = '—'; interp.textContent = 'Select all Day 1 and Day 30 responses to see your progress interpretation.'; return; }
+
+  const diff = d1 - d30;
+  disp.textContent = (diff > 0 ? '+' : '') + diff;
+
+  if (diff > 0) interp.textContent = 'Fewer concern-level responses — functional confidence is improving. The protocol is working.';
+  else if (diff === 0) interp.textContent = 'Same responses — maintain the protocol. Bone remodeling operates on a 3–6 month cycle.';
+  else interp.textContent = 'More concern-level responses — review load thresholds and protein distribution. Contact Randy directly.';
+}
+
+// ── PROFILE SAVE ─────────────────────────────────────────────────
+function saveProfile() {
+  try {
+    localStorage.setItem('mmm_name', document.getElementById('pf-name').value);
+    localStorage.setItem('mmm_start', document.getElementById('pf-start').value);
+    localStorage.setItem('mmm_end', document.getElementById('pf-end').value);
+  } catch(e) {}
+}
+
+function loadProfile() {
+  try {
+    document.getElementById('pf-name').value  = localStorage.getItem('mmm_name') || '';
+    document.getElementById('pf-start').value = localStorage.getItem('mmm_start') || '';
+    document.getElementById('pf-end').value   = localStorage.getItem('mmm_end') || '';
+  } catch(e) {}
+}
+
+function autosave() { /* placeholder for future save hook */ }
+
+function resetAll() {
+  if (!confirm('Reset all logged data? This cannot be undone.')) return;
+  document.querySelectorAll('input[type="text"], input[type="number"]').forEach(i => i.value = '');
+  document.querySelectorAll('.checklist li').forEach(li => li.classList.remove('checked'));
+  document.querySelectorAll('.toggle-btn').forEach(b => b.className = 'toggle-btn');
+  document.querySelectorAll('.daily-total-cell').forEach(c => c.textContent = '—');
+  Object.assign(reassessData, { day1: {}, day30: {} });
+  updateScore();
+}
+
+// ── SCROLL REVEAL ─────────────────────────────────────────────────
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── INIT ──────────────────────────────────────────────────────────
+buildNutritionTable('nutr-w1-body', 1, 7, false);
+buildNutritionTable('nutr-w2-body', 8, 14, true);
+loadProfile();
+</script>
+</body>
+</html>
