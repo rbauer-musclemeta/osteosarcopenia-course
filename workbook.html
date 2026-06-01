@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>30-Day Action Plan Workbook · Osteosarcopenia Protocol · Muscle-Meta Matrix™</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --ink-90: #1a1a1a;
+    --ink-70: #333333;
+    --ink-50: #666666;
+    --ink-30: #999999;
+    --ink-15: #d9d9d9;
+    --ink-06: #f0efec;
+    --ink-03: #f7f6f3;
+    --white: #ffffff;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,.08);
+    --shadow-md: 0 4px 16px rgba(0,0,0,.10);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,.14);
+    --shadow-hover: 0 20px 50px rgba(0,0,0,.20);
+    --radius: 12px;
+    --radius-lg: 20px;
+    --transition: all .28s cubic-bezier(.4,0,.2,1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--ink-03);
+    color: var(--ink-70);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .site-header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,.94);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--ink-15);
+    padding: 0 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+    box-shadow: var(--shadow-sm);
+  }
+  .logo-mark { 
+    display: flex; align-items: center; gap: 10px; 
+    text-decoration: none; color: inherit; 
+  }
+  .logo-box { 
+    width: 36px; height: 36px; 
+    background: var(--ink-90); 
+    border-radius: 8px; 
+    display: flex; align-items: center; justify-content: center; 
+  }
+  .logo-box i { color: #fff; font-size: 14px; }
+  .logo-text { display: flex; flex-direction: column; line-height: 1.15; }
+  .logo-name { 
+    font-family: 'Cormorant Garamond', serif; 
+    font-weight: 700; font-size: 16px; 
+    color: var(--ink-90); 
+  }
+  .logo-sub { 
+    font-size: 10px; letter-spacing: .12em; 
+    text-transform: uppercase; color: var(--ink-50); 
+  }
+  .header-actions { display: flex; gap: 10px; align-items: center; }
+  .btn-back {
+    width: 38px; height: 38px; border-radius: 8px;
+    border: 1px solid var(--ink-15);
+    background: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: var(--ink-70);
+    transition: var(--transition);
+    text-decoration: none;
+  }
+  .btn-back:hover { background: var(--ink-06); border-color: var(--ink-30); }
+
+  .hero {
+    background: linear-gradient(135deg, var(--ink-90) 0%, var(--ink-70) 100%);
+    color: #fff;
+    padding: 80px 32px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent 0 24px,
+      rgba(255,255,255,.03) 24px 25px
+    );
+  }
+  .hero-inner { 
+    max-width: 900px; margin: 0 auto; 
+    position: relative; 
+    text-align: center;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 700; line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .hero-subtitle {
+    font-size: 18px; 
+    color: rgba(255,255,255,.8);
+    max-width: 700px;
+    margin: 0 auto 40px;
+  }
+  .cta-section {
+    display: flex; 
+    gap: 16px; 
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary, .btn-secondary {
+    padding: 14px 32px;
+    border-radius: 8px;
+    border: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: var(--transition);
+  }
+  .btn-primary {
+    background: #fff;
+    color: var(--ink-90);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+  }
+  .btn-secondary {
+    background: rgba(255,255,255,.2);
+    border: 2px solid rgba(255,255,255,.4);
+    color: #fff;
+  }
+  .btn-secondary:hover {
+    background: rgba(255,255,255,.3);
+    border-color: rgba(255,255,255,.6);
+  }
+
+  .section { max-width: 900px; margin: 0 auto; padding: 60px 32px; }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--ink-90);
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .section-subtitle {
+    font-size: 16px;
+    color: var(--ink-50);
+    text-align: center;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .feature-card {
+    background: var(--white);
+    border: 1px solid var(--ink-15);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    text-align: center;
+    transition: var(--transition);
+  }
+  .feature-card:hover {
+    border-color: var(--ink-30);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+  }
+  .feature-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--ink-06);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: var(--ink-90);
+    margin: 0 auto 16px;
+  }
+  .feature-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink-90);
+    margin-bottom: 12px;
+  }
+  .feature-text {
+    font-size: 14px;
+    color: var(--ink-50);
+    line-height: 1.6;
+  }
+
+  .phases-section {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    margin-bottom: 40px;
+  }
+  .phases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .phase-card {
+    background: var(--ink-03);
+    border: 1px solid var(--ink-15);
+    border-radius: var(--radius);
+    padding: 24px;
+    text-align: center;
+    transition: var(--transition);
+  }
+  .phase-card:hover {
+    border-color: var(--ink-30);
+    box-shadow: var(--shadow-md);
+  }
+  .phase-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--ink-15);
+    margin-bottom: 8px;
+  }
+  .phase-label {
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-50);
+    margin-bottom: 8px;
+  }
+  .phase-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink-90);
+  }
+
+  .cta-box {
+    background: var(--ink-90);
+    color: #fff;
+    border-radius: var(--radius-lg);
+    padding: 60px 40px;
+    text-align: center;
+  }
+  .cta-box h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .cta-box p {
+    font-size: 16px;
+    color: rgba(255,255,255,.8);
+    margin-bottom: 32px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .site-footer {
+    background: var(--ink-90);
+    color: rgba(255,255,255,.5);
+    padding: 40px 32px;
+    text-align: center;
+    font-size: 12px;
+  }
+  .site-footer strong { color: rgba(255,255,255,.85); }
+
+  @media (max-width: 700px) {
+    .site-header { padding: 0 16px; }
+    .hero { padding: 60px 16px; }
+    .section { padding: 40px 16px; }
+    .section-title { font-size: 32px; }
+    .cta-box { padding: 40px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="logo-mark" href="/">
+    <div class="logo-box"><i class="fa-solid fa-bolt"></i></div>
+    <div class="logo-text">
+      <span class="logo-name">Muscle-Meta Matrix™</span>
+      <span class="logo-sub">Osteosarcopenia Protocol</span>
+    </div>
+  </a>
+  <div class="header-actions">
+    <a class="btn-back" href="/" title="Back to home"><i class="fa-solid fa-arrow-left"></i></a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1>30-Day Action Plan Workbook</h1>
+    <p class="hero-subtitle">Your complete guide to combining resistance training with protein signaling to reverse osteosarcopenia in 4 phases over 30 days.</p>
+    <div class="cta-section">
+      <a href="assets/30day-action-plan-workbook-updated.html" class="btn-primary">
+        <i class="fa-solid fa-book-open"></i> Open Workbook
+      </a>
+      <a href="assets/30day-action-plan-workbook-updated.html" download class="btn-secondary">
+        <i class="fa-solid fa-download"></i> Download
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">What's Inside</h2>
+  <p class="section-subtitle">Everything you need to successfully complete the 30-day protocol</p>
+  
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-calendar-days"></i></div>
+      <div class="feature-title">4-Week Progression</div>
+      <div class="feature-text">Follow a structured framework that progressively builds strength and muscle over 30 days.</div>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-dumbbell"></i></div>
+      <div class="feature-title">Movement Tracking</div>
+      <div class="feature-text">Log sets, reps, and weights for every exercise. Watch your strength improve week to week.</div>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-utensils"></i></div>
+      <div class="feature-title">Nutrition Logging</div>
+      <div class="feature-text">Track protein intake per meal and monitor post-workout nutrition timing for optimal muscle synthesis.</div>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
+      <div class="feature-title">Progress Assessment</div>
+      <div class="feature-text">Compare your Day 1 baseline to Day 30 results. See tangible improvements in strength and capacity.</div>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-list-check"></i></div>
+      <div class="feature-title">Weekly Checklists</div>
+      <div class="feature-text">Stay on track with actionable weekly tasks. Data saves automatically as you complete items.</div>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-print"></i></div>
+      <div class="feature-title">Print-Friendly Design</div>
+      <div class="feature-text">Print the workbook for offline use or create a professional portfolio of your 30-day journey.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">The 4-Phase Protocol</h2>
+  <p class="section-subtitle">A progressive framework synchronizing resistance training and protein signaling</p>
+  
+  <div class="phases-section">
+    <div class="phases-grid">
+      <div class="phase-card">
+        <div class="phase-number">01</div>
+        <div class="phase-label">Days 1–7</div>
+        <div class="phase-title">Establish the Baseline</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-number">02</div>
+        <div class="phase-label">Days 8–14</div>
+        <div class="phase-title">Anchor the Protein Signal</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-number">03</div>
+        <div class="phase-label">Days 15–21</div>
+        <div class="phase-title">Synchronize the Signals</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-number">04</div>
+        <div class="phase-label">Days 22–30</div>
+        <div class="phase-title">Compound & Assess</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="cta-box">
+    <h2>Ready to Start?</h2>
+    <p>Open the workbook below to begin your 30-day transformation. Enter your name, set your dates, and follow each phase. Data saves automatically to your browser.</p>
+    <a href="assets/30day-action-plan-workbook-updated.html" class="btn-primary">
+      <i class="fa-solid fa-arrow-right"></i> Get Started Now
+    </a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>© 2024 Muscle-Meta Matrix™ · <strong>Randy Bauer, PT</strong> · Osteosarcopenia Protocol</p>
+  <p style="margin-top: 12px; font-size: 11px;">For questions or support, contact: <strong>rbauer@bauerpt.com</strong></p>
+</footer>
+
+</body>
+</html>
