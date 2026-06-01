@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Osteosarcopenia Protocol · 30-Day Action Plan Workbook · Muscle-Meta Matrix™</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<style>
+  :root {
+    --ink:          #0a0a0a;
+    --ink-90:       #1a1a1a;
+    --ink-70:       #333333;
+    --ink-50:       #666666;
+    --ink-30:       #999999;
+    --ink-15:       #d9d9d9;
+    --ink-06:       #f0efec;
+    --ink-03:       #f7f6f3;
+    --white:        #ffffff;
+    --shadow-sm: 0 1px 4px rgba(0,0,0,.08);
+    --shadow-md: 0 4px 16px rgba(0,0,0,.10);
+    --shadow-hover: 0 20px 50px rgba(0,0,0,.20);
+    --radius: 12px;
+    --radius-lg: 20px;
+    --transition: all .28s cubic-bezier(.4,0,.2,1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--ink-03);
+    color: var(--ink-70);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .site-header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,.94);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--ink-15);
+    padding: 0 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+    box-shadow: var(--shadow-sm);
+  }
+  .logo-mark { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
+  .logo-box { width: 36px; height: 36px; background: var(--ink-90); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+  .logo-box i { color: #fff; font-size: 14px; }
+  .logo-text { display: flex; flex-direction: column; line-height: 1.15; }
+  .logo-name { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 16px; color: var(--ink-90); }
+  .logo-sub { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-50); }
+  .btn-print {
+    padding: 0 18px; height: 38px; border-radius: 8px;
+    border: none;
+    background: var(--ink-90);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px; font-weight: 500;
+    cursor: pointer;
+    display: flex; align-items: center; gap: 7px;
+    transition: var(--transition);
+  }
+  .btn-print:hover { background: var(--ink-70); box-shadow: var(--shadow-md); }
+
+  .hero {
+    background: var(--ink-90);
+    color: #fff;
+    padding: 64px 32px 72px;
+    position: relative; overflow: hidden;
+  }
+  .hero-inner { max-width: 900px; margin: 0 auto; position: relative; }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 5vw, 54px);
+    font-weight: 700; line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .hero-subtitle {
+    font-size: 17px; color: rgba(255,255,255,.7);
+    max-width: 600px;
+  }
+
+  .section { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+  .phases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 40px 0; }
+  .phase-card {
+    background: var(--white);
+    border: 1px solid var(--ink-15);
+    border-radius: var(--radius);
+    padding: 24px 20px;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .phase-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--ink-30);
+  }
+  .phase-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px; font-weight: 700;
+    color: var(--ink-15);
+    margin-bottom: 8px;
+  }
+  .phase-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 700; color: var(--ink-90); }
+
+  .week-nav {
+    display: flex; gap: 8px;
+    padding: 32px 0 0;
+    max-width: 900px; margin: 0 auto;
+    padding-left: 32px; padding-right: 32px;
+  }
+  .week-tab {
+    flex: 1; padding: 14px 8px;
+    border: 1px solid var(--ink-15);
+    border-bottom: none;
+    border-radius: 12px 12px 0 0;
+    background: var(--ink-06);
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px; font-weight: 600;
+    color: var(--ink-50); cursor: pointer;
+    transition: var(--transition);
+  }
+  .week-tab:hover { background: var(--ink-15); color: var(--ink-90); }
+  .week-tab.active { background: var(--white); color: var(--ink-90); border-color: var(--ink-15); }
+  
+  .week-panel {
+    display: none;
+    background: var(--white);
+    border: 1px solid var(--ink-15);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    padding: 40px;
+    max-width: 900px; margin: 0 auto;
+    margin-left: 32px; margin-right: 32px;
+    box-shadow: var(--shadow-md);
+  }
+  .week-panel.active { display: block; }
+
+  .week-title { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 700; color: var(--ink-90); margin-bottom: 16px; }
+  .panel-section-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--ink-90); margin: 24px 0 16px 0; }
+
+  .exercise-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 28px; }
+  .exercise-card {
+    background: var(--ink-03);
+    border: 1px solid var(--ink-15);
+    border-radius: var(--radius);
+    padding: 18px 16px;
+    transition: var(--transition);
+  }
+  .exercise-card:hover {
+    border-color: var(--ink-30);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+  .exercise-name { font-weight: 600; color: var(--ink-90); font-size: 14px; margin-bottom: 4px; }
+  .exercise-target { font-size: 12px; color: var(--ink-50); font-family: 'Cormorant Garamond', serif; font-style: italic; }
+
+  .divider { border: none; border-top: 1px solid var(--ink-15); margin: 28px 0; }
+
+  .site-footer {
+    background: var(--ink-90); color: rgba(255,255,255,.5);
+    padding: 32px;
+    margin-top: 80px;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  @media print {
+    .site-header, .week-nav, .btn-print, .week-tab { display: none !important; }
+    .week-panel { display: block !important; border: none !important; box-shadow: none !important; }
+    .hero { background: #fff !important; color: #000 !important; }
+  }
+
+  @media (max-width: 700px) {
+    .site-header { padding: 0 16px; }
+    .section { padding: 0 16px; }
+    .week-nav { padding-left: 16px; padding-right: 16px; }
+    .week-panel { margin-left: 16px; margin-right: 16px; padding: 24px 20px; }
+    .phases-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="logo-mark" href="#">
+    <div class="logo-box"><i class="fa-solid fa-bolt"></i></div>
+    <div class="logo-text">
+      <span class="logo-name">Muscle-Meta Matrix™</span>
+      <span class="logo-sub">Osteosarcopenia Protocol</span>
+    </div>
+  </a>
+  <button class="btn-print" onclick="window.print()"><i class="fa-solid fa-print"></i> Print</button>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1>The Osteosarcopenia Protocol<br>30-Day Action Plan Workbook</h1>
+    <p class="hero-subtitle">A phased, progressive framework synchronizing resistance training and protein signaling to combat compound bone-muscle loss in adults 45+.</p>
+  </div>
+</section>
+
+<div style="margin-top:56px;">
+  <div class="section">
+    <div class="panel-section-title">Protocol Overview</div>
+    <div class="phases-grid">
+      <div class="phase-card" onclick="switchTab(0)"><div class="phase-number">01</div><div class="phase-title">Establish the Baseline</div></div>
+      <div class="phase-card" onclick="switchTab(1)"><div class="phase-number">02</div><div class="phase-title">Anchor the Protein Signal</div></div>
+      <div class="phase-card" onclick="switchTab(2)"><div class="phase-number">03</div><div class="phase-title">Synchronize the Signals</div></div>
+      <div class="phase-card" onclick="switchTab(3)"><div class="phase-number">04</div><div class="phase-title">Compound & Assess</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="week-nav">
+  <button class="week-tab active" onclick="switchTab(0)">Week 1</button>
+  <button class="week-tab" onclick="switchTab(1)">Week 2</button>
+  <button class="week-tab" onclick="switchTab(2)">Week 3</button>
+  <button class="week-tab" onclick="switchTab(3)">Week 4</button>
+</div>
+
+<div class="week-panel active" id="panel-0">
+  <div class="week-title">Week 1 · Establish the Baseline</div>
+  <p>Days 1-7: Tier 1 only, 2x per week. Focus on movement quality with no added load.</p>
+  <hr class="divider">
+  <div class="panel-section-title">Tier 1 Movements</div>
+  <div class="exercise-cards">
+    <div class="exercise-card"><div class="exercise-name">Bodyweight Squat</div><div class="exercise-target">3 × 10–12</div></div>
+    <div class="exercise-card"><div class="exercise-name">Hip Hinge</div><div class="exercise-target">3 × 10</div></div>
+    <div class="exercise-card"><div class="exercise-name">Incline / Wall Push-Up</div><div class="exercise-target">3 × 8–10</div></div>
+    <div class="exercise-card"><div class="exercise-name">Band / Cable Row</div><div class="exercise-target">3 × 10–12</div></div>
+  </div>
+</div>
+
+<div class="week-panel" id="panel-1">
+  <div class="week-title">Week 2 · Anchor the Protein Signal</div>
+  <p>Days 8-14: Tier 1 + Tier 2, 2-3x per week. Introduce resistance and establish working loads at 70-75%.</p>
+  <hr class="divider">
+  <div class="panel-section-title">Tier 1 + Tier 2 Movements</div>
+  <div class="exercise-cards">
+    <div class="exercise-card"><div class="exercise-name">Bodyweight Squat</div><div class="exercise-target">3 × 10–12</div></div>
+    <div class="exercise-card"><div class="exercise-name">Hip Hinge</div><div class="exercise-target">3 × 10</div></div>
+    <div class="exercise-card"><div class="exercise-name">Goblet Squat</div><div class="exercise-target">3 × 8–10</div></div>
+    <div class="exercise-card"><div class="exercise-name">Trap Bar / DB Deadlift</div><div class="exercise-target">3 × 8</div></div>
+  </div>
+</div>
+
+<div class="week-panel" id="panel-2">
+  <div class="week-title">Week 3 · Synchronize the Signals</div>
+  <p>Days 15-21: All 3 tiers, 3x per week. 2 load sessions plus 1 power session.</p>
+  <hr class="divider">
+  <div class="panel-section-title">All Tiers (12 Movements)</div>
+  <div class="exercise-cards">
+    <div class="exercise-card"><div class="exercise-name">Bodyweight Squat</div><div class="exercise-target">3 × 10–12</div></div>
+    <div class="exercise-card"><div class="exercise-name">Hip Hinge</div><div class="exercise-target">3 × 10</div></div>
+    <div class="exercise-card"><div class="exercise-name">Goblet Squat</div><div class="exercise-target">3 × 8–10</div></div>
+    <div class="exercise-card"><div class="exercise-name">Trap Bar / DB Deadlift</div><div class="exercise-target">3 × 6–8</div></div>
+  </div>
+</div>
+
+<div class="week-panel" id="panel-3">
+  <div class="week-title">Week 4 · Compound & Assess</div>
+  <p>Days 22-30: Full protocol, 3x per week. Apply 5% progressive overload and complete Day 30 reassessment.</p>
+  <hr class="divider">
+  <div class="panel-section-title">Full Protocol</div>
+  <p>Complete all movements from Weeks 1-3 with progressive overload as tolerated.</p>
+</div>
+
+<footer class="site-footer">
+  <p>© 2024 Muscle-Meta Matrix™ · <strong>Randy Bauer, PT</strong> · Osteosarcopenia Protocol</p>
+</footer>
+
+<script>
+  function switchTab(index) {
+    document.querySelectorAll('.week-tab').forEach((tab, i) => tab.classList.toggle('active', i === index));
+    document.querySelectorAll('.week-panel').forEach((panel, i) => panel.classList.toggle('active', i === index));
+  }
+</script>
+
+</body>
+</html>
