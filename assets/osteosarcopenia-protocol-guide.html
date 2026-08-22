@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Osteosarcopenia Protocol — Companion Guide · Muscle-Meta Matrix™</title>
+<meta name="description" content="Course companion guide: the bone-muscle axis, the four leverage points, the protein anabolic threshold, and your starting checklist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<style>
+/* =============================================================================
+   MUSCLE-META MATRIX™  •  BRAND TOKENS
+   ========================================================================== */
+:root {
+  --teal: #009090; --teal-dark: #006b6b; --teal-light: #00b3b3; --teal-muted: #e6f5f5; --teal-tint: #f0f9f9;
+  --gold: #D4AF37; --gold-dark: #B5952F; --gold-light: #e3c56a; --gold-muted: #faf6e8;
+  --purple: #7c3aed; --purple-muted: #f3f0fd;
+  --green: #16a34a; --green-muted: #f0fdf4;
+  --ink: #1a2332; --ink-soft: #344256; --ink-muted: #6b7b8f; --ink-faint: #a8b3c2;
+  --surface: #f7f6f3; --surface-tint: #fdfcfa; --border: #e8e6e1; --border-soft: #f0eeea; --white: #ffffff;
+  --tier-1: #009090; --tier-2: #3b82f6; --tier-3: #f59e0b; --tier-4: #f97316; --tier-5: #dc2626;
+  --tier-1-muted: #e6f5f5; --tier-2-muted: #eff6ff; --tier-3-muted: #fef3c7; --tier-4-muted: #ffedd5; --tier-5-muted: #fee2e2;
+  --font-display: 'Cormorant Garamond', 'Cormorant', Georgia, serif;
+  --font-body: 'Outfit', 'Helvetica Neue', Arial, sans-serif;
+  --fs-eyebrow: 11px; --fs-caption: 12px; --fs-micro: 13px; --fs-body: 16px; --fs-lede: 19px;
+  --fs-h4: 22px; --fs-h3: 28px; --fs-h2: 38px; --fs-h1: 52px;
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px; --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 80px;
+  --content-narrow: 760px; --gutter: 32px; --gutter-mobile: 20px;
+  --r-1: 6px; --r-2: 10px; --r-3: 14px; --r-4: 20px; --r-pill: 999px;
+  --shadow-sm: 0 2px 8px rgba(26,35,50,0.05); --shadow-md: 0 6px 20px rgba(26,35,50,0.07); --shadow-lg: 0 12px 40px rgba(26,35,50,0.08);
+  --shadow-teal: 0 8px 30px rgba(0,144,144,0.15); --shadow-gold: 0 4px 16px rgba(212,175,55,0.25);
+  --ease-out: cubic-bezier(0.16,1,0.3,1); --dur-base: 240ms;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { margin:0; padding:0; background: var(--surface); color: var(--ink-soft); font-family: var(--font-body); font-size: var(--fs-body); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+h1,h2,h3,h4 { font-family: var(--font-display); color: var(--ink); font-weight: 700; letter-spacing: -0.01em; margin: 0; }
+h1 { font-size: var(--fs-h1); line-height: 1.06; letter-spacing: -0.02em; }
+h2 { font-size: var(--fs-h2); line-height: 1.14; }
+h3 { font-size: var(--fs-h3); line-height: 1.22; }
+h4 { font-size: var(--fs-h4); line-height: 1.28; }
+p { margin: 0; }
+strong { color: var(--ink); font-weight: 600; }
+em { font-style: italic; }
+a { color: var(--teal); }
+
+.eyebrow { font-family: var(--font-body); font-size: var(--fs-eyebrow); font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); }
+.lede { font-size: var(--fs-lede); line-height: 1.6; color: var(--ink-soft); font-weight: 300; }
+
+.mmm-container { max-width: var(--content-narrow); margin: 0 auto; padding: 0 var(--gutter); }
+.mmm-section { padding: var(--s-7) 0; }
+.mmm-section-first { padding: var(--s-6) 0 var(--s-7); }
+
+/* ---------- TOP UTILITY BAR (screen only) ---------- */
+.mm-topbar {
+  position: sticky; top: 0; z-index: 60;
+  background: rgba(247,246,243,0.9); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.mm-topbar-inner { max-width: var(--content-narrow); margin: 0 auto; padding: 14px 32px; display:flex; align-items:center; justify-content:space-between; gap: var(--s-4); }
+.mm-topbar-brand { display:flex; align-items:center; gap: 10px; }
+.mm-logo-mark { width: 26px; height: 26px; background: var(--teal); border-radius: 6px; position: relative; flex-shrink:0; }
+.mm-logo-mark::after { content:''; position:absolute; top:-4px; right:-4px; width:9px; height:9px; background: var(--gold); border-radius: 2px; }
+.mm-topbar-word { font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--ink); white-space: nowrap; }
+.mm-topbar-word sup { font-size: 9px; color: var(--teal); }
+.mm-dl-btn {
+  display:inline-flex; align-items:center; gap: 8px; background: var(--teal); color: var(--white);
+  font-family: var(--font-body); font-size: 13.5px; font-weight: 600; letter-spacing: 0.01em;
+  border: none; border-radius: var(--r-pill); padding: 10px 18px; cursor:pointer; white-space: nowrap;
+  box-shadow: var(--shadow-sm); transition: all var(--dur-base) var(--ease-out);
+}
+.mm-dl-btn:hover { background: var(--ink); box-shadow: var(--shadow-gold); transform: translateY(-1px); }
+.mm-dl-btn i { font-size: 12px; }
+
+/* ---------- HERO ---------- */
+.mm-hero { position: relative; background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 55%, #0a4a4a 100%); overflow: hidden; padding: var(--s-8) 0 var(--s-7); border-bottom: 4px solid var(--gold); }
+.mm-hero::before { content:''; position:absolute; top:-60px; right:-60px; width:280px; height:280px; background: radial-gradient(circle, rgba(212,175,55,0.16) 0%, transparent 70%); border-radius:50%; }
+.mm-hero-badge { display:flex; align-items:center; gap:8px; color: rgba(255,255,255,0.92); font-size: 12.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: var(--s-4); position:relative; z-index:1; }
+.mm-hero-badge .sq { width:11px; height:11px; background: var(--white); border-radius: 2px; display:inline-block; }
+.mm-hero-meta { color: rgba(255,255,255,0.72); font-size: 13.5px; font-weight: 500; margin-bottom: var(--s-3); position:relative; z-index:1; }
+.mm-hero h1 { color: var(--white); position: relative; z-index: 1; margin-bottom: var(--s-3); }
+.mm-hero-sub { color: rgba(255,255,255,0.82); font-size: 17px; font-weight: 300; max-width: 520px; position:relative; z-index:1; }
+
+/* ---------- INTRO BLOCK ---------- */
+.mm-tagline-pill {
+  display:inline-block; background: var(--gold-muted); border: 1.5px solid var(--gold); color: var(--ink);
+  font-family: var(--font-display); font-weight: 700; font-size: 18px; border-radius: var(--r-2);
+  padding: 12px 22px; margin-bottom: var(--s-5);
+}
+.mm-toc-box { background: var(--teal-tint); border: 1px solid var(--teal-muted); border-radius: var(--r-3); padding: var(--s-5) var(--s-6); margin-bottom: var(--s-5); }
+.mm-toc-box .eyebrow { color: var(--teal-dark); display:block; margin-bottom: var(--s-3); }
+.mm-toc-list { list-style: none; margin:0; padding:0; display:flex; flex-direction: column; gap: 9px; }
+.mm-toc-list li { display:flex; gap: 8px; align-items:baseline; font-size: 14.5px; color: var(--ink-soft); }
+.mm-toc-list li::before { content:''; width:6px; height:6px; border-radius:50%; background: var(--teal); flex-shrink:0; margin-top: 6px; }
+.mm-toc-list strong { color: var(--ink); }
+.mm-byline { border-top: 1px solid var(--border); padding-top: var(--s-4); font-size: 14px; color: var(--ink-muted); }
+.mm-byline strong { display:block; color: var(--ink); font-size: 15px; margin-bottom: 2px; }
+
+/* ---------- SECTIONS ---------- */
+.mm-section-num { color: var(--teal); }
+.mm-section-title { margin: var(--s-2) 0 var(--s-4); }
+.mm-rule { border: none; height: 2px; background: linear-gradient(90deg, var(--teal) 0, var(--border) 70px); margin: 0 0 var(--s-5); }
+.mm-copy { display:flex; flex-direction: column; gap: var(--s-4); font-size: 15.5px; color: var(--ink-soft); }
+.mm-copy strong { color: var(--ink); }
+
+.mm-callout { display:flex; gap: var(--s-3); background: var(--teal-tint); border-left: 4px solid var(--teal); border-radius: var(--r-2); padding: var(--s-5); margin-top: var(--s-5); }
+.mm-callout i { color: var(--teal); font-size: 16px; margin-top: 2px; flex-shrink:0; }
+.mm-callout p { font-size: 14.5px; color: var(--ink-soft); }
+.mm-callout strong { color: var(--ink); }
+
+/* ---------- DIAGRAM ---------- */
+.mm-diagram { background: var(--white); border: 1px solid var(--border); border-radius: var(--r-3); padding: var(--s-6) var(--s-5); margin-top: var(--s-5); box-shadow: var(--shadow-sm); }
+.mm-diagram-row { display:flex; align-items:center; gap: var(--s-4); }
+.mm-diagram-box { flex: 0 0 120px; text-align:center; border-radius: var(--r-2); padding: var(--s-4) var(--s-2); color: var(--white); }
+.mm-diagram-box .lbl { font-family: var(--font-display); font-weight:700; font-size: 16.5px; }
+.mm-diagram-box .sub { font-size: 10.5px; opacity: 0.85; margin-top: 2px; letter-spacing: 0.02em; }
+.mm-diagram-box.muscle { background: var(--teal); }
+.mm-diagram-box.bone { background: var(--gold-dark); }
+.mm-diagram-arrows { flex:1; display:flex; flex-direction:column; gap: var(--s-4); }
+.mm-arrow-block { text-align:center; }
+.mm-arrow-label { display:inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 12px; border-radius: var(--r-pill); margin-bottom: 6px; }
+.mm-arrow-label.myokine { background: var(--teal-muted); color: var(--teal-dark); }
+.mm-arrow-label.osteokine { background: var(--gold-muted); color: var(--gold-dark); }
+.mm-arrow-svg { width: 100%; height: 14px; display:block; }
+.mm-diagram-caption { text-align:center; font-size: 12px; font-style: italic; color: var(--ink-muted); margin-top: var(--s-4); }
+
+/* ---------- LEVERAGE CARDS ---------- */
+.mm-leverage-grid { display:grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); margin-top: var(--s-5); }
+.mm-lev-card { background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--teal); border-radius: var(--r-2); padding: var(--s-5); box-shadow: var(--shadow-sm); }
+.mm-lev-card.gold { border-left-color: var(--gold-dark); }
+.mm-lev-num { display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:50%; background: var(--teal); color: var(--white); font-size: 13px; font-weight:700; margin-bottom: var(--s-3); }
+.mm-lev-card.gold .mm-lev-num { background: var(--gold-dark); }
+.mm-lev-card h4 { margin-bottom: var(--s-2); font-size: 17px; }
+.mm-lev-card p { font-size: 13.8px; color: var(--ink-soft); line-height: 1.55; }
+.mm-compound-note { background: var(--ink); color: rgba(255,255,255,0.92); border-radius: var(--r-2); padding: var(--s-5); margin-top: var(--s-5); font-size: 14.5px; line-height: 1.6; }
+.mm-compound-note strong { color: var(--gold-light); }
+
+/* ---------- THRESHOLD PANEL ---------- */
+.mm-threshold-panel { display:flex; gap: var(--s-5); background: var(--white); border: 1px solid var(--border); border-radius: var(--r-3); padding: var(--s-5) var(--s-6); margin-top: var(--s-5); box-shadow: var(--shadow-sm); position:relative; }
+.mm-bars { flex: 1.4; display:flex; flex-direction: column; gap: var(--s-4); position:relative; padding-top: 22px; }
+.mm-threshold-line { position:absolute; top: 4px; bottom: 0; left: 71.4%; width:0; border-left: 2px dashed var(--tier-5); }
+.mm-threshold-line .tl-label { position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-size: 9.5px; font-weight:700; letter-spacing:0.08em; color: var(--tier-5); white-space:nowrap; }
+.mm-bar-row { display:flex; flex-direction: column; gap: 6px; }
+.mm-bar-toprow { display:flex; align-items: baseline; justify-content: space-between; gap: var(--s-3); }
+.mm-bar-label { font-size: 12.5px; font-weight: 600; color: var(--ink); }
+.mm-bar-value { font-size: 11.5px; font-weight: 700; white-space: nowrap; }
+.mm-bar-value.tier65 { color: var(--tier-4); }
+.mm-bar-value.tier5565 { color: var(--gold-dark); }
+.mm-bar-value.tier3040 { color: var(--teal-dark); }
+.mm-bar-track { background: var(--border-soft); border-radius: var(--r-pill); height: 20px; position: relative; }
+.mm-bar-fill { height:100%; border-radius: var(--r-pill); }
+.mm-bar-fill.tier65 { background: var(--tier-4); }
+.mm-bar-fill.tier5565 { background: var(--gold-dark); }
+.mm-bar-fill.tier3040 { background: var(--teal); }
+.mm-key-box { flex: 1; background: var(--teal-tint); border: 1px solid var(--teal-muted); border-radius: var(--r-2); padding: var(--s-4); align-self: flex-start; }
+.mm-key-box .eyebrow { color: var(--teal-dark); display:block; margin-bottom: var(--s-2); }
+.mm-key-box p { font-size: 13px; color: var(--ink-soft); line-height: 1.55; }
+.mm-key-box p + p { margin-top: var(--s-3); }
+
+.mm-source-table { width:100%; border-collapse: collapse; margin-top: var(--s-4); font-size: 13.8px; border-radius: var(--r-2); overflow:hidden; box-shadow: var(--shadow-sm); }
+.mm-source-table thead tr { background: var(--teal); }
+.mm-source-table th { color: var(--white); text-align:left; padding: 10px 14px; font-size: 10.5px; font-weight:700; letter-spacing: 0.07em; text-transform: uppercase; }
+.mm-source-table td { padding: 9px 14px; border-bottom: 1px solid var(--border); color: var(--ink-soft); }
+.mm-source-table tr:nth-child(even) td { background: var(--surface-tint); }
+.mm-source-table tr:last-child td { border-bottom:none; }
+.mm-source-table td.num { color: var(--teal-dark); font-weight:700; }
+.mm-footnote { font-size: 12.5px; font-style: italic; color: var(--ink-muted); margin-top: var(--s-3); }
+
+/* ---------- CHECKLIST ---------- */
+.mm-checklist { display:flex; flex-direction:column; gap: var(--s-4); margin-top: var(--s-5); }
+.mm-check-item { background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--teal); border-radius: var(--r-2); padding: var(--s-4) var(--s-5); box-shadow: var(--shadow-sm); }
+.mm-check-q { display:flex; gap: var(--s-3); }
+.mm-check-num { flex: 0 0 24px; height:24px; border-radius:50%; background: var(--teal-muted); color: var(--teal-dark); font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+.mm-check-body { flex: 1; }
+.mm-check-body p.q { font-size: 14.8px; color: var(--ink); font-weight: 500; line-height: 1.45; }
+.mm-check-body p.ind { font-size: 12px; font-style: italic; color: var(--ink-muted); margin-top: 3px; }
+.mm-check-options { display:flex; flex-wrap:wrap; gap: 8px; margin-top: var(--s-3); align-items:center; }
+.mm-opt { position:relative; }
+.mm-opt input { position:absolute; opacity:0; width:100%; height:100%; margin:0; cursor:pointer; }
+.mm-opt label { display:inline-flex; align-items:center; justify-content:center; min-width: 88px; padding: 7px 14px; border-radius: var(--r-pill); border: 1.5px solid var(--border); font-size: 12.5px; font-weight: 700; letter-spacing: 0.03em; color: var(--ink-muted); cursor:pointer; transition: all var(--dur-base) var(--ease-out); }
+.mm-opt input:checked + label { color: var(--white); border-color: transparent; }
+.mm-opt.yes input:checked + label { background: var(--tier-5); }
+.mm-opt.sometimes input:checked + label { background: var(--tier-3); }
+.mm-opt.no input:checked + label { background: var(--tier-1); }
+.mm-opt label:hover { border-color: var(--teal); }
+.mm-notes { flex:1; min-width: 140px; border:none; border-bottom: 1px solid var(--border); background:transparent; font-family: var(--font-body); font-size: 13px; color: var(--ink-soft); padding: 6px 2px; }
+.mm-notes:focus { outline:none; border-bottom-color: var(--teal); }
+.mm-notes-label { font-size: 11px; color: var(--ink-muted); margin-right: 4px; }
+
+.mm-interpret-wrap { margin-top: var(--s-6); }
+.mm-interpret-row { display:grid; grid-template-columns: 120px 1fr; gap: var(--s-4); align-items:center; border-radius: var(--r-2); padding: var(--s-4) var(--s-5); margin-bottom: var(--s-3); border: 1.5px solid transparent; transition: all var(--dur-base) var(--ease-out); }
+.mm-interpret-row .tag { font-family: var(--font-display); font-weight:700; font-size: 16px; }
+.mm-interpret-row p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.5; }
+.mm-interpret-row.band-0 { background: var(--tier-1-muted); }
+.mm-interpret-row.band-0 .tag { color: var(--tier-1); }
+.mm-interpret-row.band-1 { background: var(--tier-3-muted); }
+.mm-interpret-row.band-1 .tag { color: #92400e; }
+.mm-interpret-row.band-2 { background: var(--tier-5-muted); }
+.mm-interpret-row.band-2 .tag { color: var(--tier-5); }
+.mm-interpret-row.active { border-color: currentColor; box-shadow: var(--shadow-md); }
+.mm-signal-readout { text-align:center; font-size: 12.5px; color: var(--ink-muted); margin-top: var(--s-3); }
+.mm-signal-readout strong { color: var(--ink); }
+
+/* ---------- CLOSING ---------- */
+.mm-closing { text-align:center; padding: var(--s-7) 0 var(--s-6); border-top: 1px solid var(--border); margin-top: var(--s-5); }
+.mm-closing .tag { font-family: var(--font-display); font-weight:700; font-size: 22px; color: var(--teal-dark); margin-bottom: var(--s-2); }
+.mm-closing p.next { font-size: 14px; color: var(--ink-muted); margin-bottom: var(--s-4); }
+.mm-closing .sig { font-size: 13.5px; font-weight:600; color: var(--ink); }
+
+/* ---------- FOOTER ---------- */
+.mm-footer { background: var(--ink); color: rgba(255,255,255,0.6); padding: var(--s-6) 0; }
+.mm-footer-inner { max-width: var(--content-narrow); margin:0 auto; padding: 0 var(--gutter); display:flex; flex-direction:column; gap: var(--s-3); }
+.mm-footer-row { display:flex; justify-content:space-between; flex-wrap:wrap; gap: var(--s-3); font-size: 12.5px; }
+.mm-footer-row a { color: rgba(255,255,255,0.75); }
+.mm-footer-disclaimer { font-size: 11.5px; line-height: 1.6; color: rgba(255,255,255,0.45); border-top: 1px solid rgba(255,255,255,0.12); padding-top: var(--s-3); }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 640px) {
+  :root { --fs-h1: 34px; --fs-h2: 27px; --fs-h3: 21px; --gutter: var(--gutter-mobile); }
+  .mm-leverage-grid { grid-template-columns: 1fr; }
+  .mm-threshold-panel { flex-direction: column; }
+  .mm-diagram-row { flex-direction: column; }
+  .mm-diagram-box { flex: 0 0 auto; width: 100%; }
+  .mm-bar-row { grid-template-columns: 90px 1fr; }
+  .mm-check-options { flex-direction: row; }
+  .mm-interpret-row { grid-template-columns: 1fr; }
+  .mm-topbar-word span.full { display:none; }
+}
+
+/* ---------- PRINT ---------- */
+@media print {
+  .mm-topbar { display: none; }
+  html, body { background: var(--white); }
+  .mm-hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; padding: var(--s-6) 0 var(--s-5); }
+  .mmm-section, .mmm-section-first { padding: var(--s-5) 0; }
+  .mm-lev-card, .mm-check-item, .mm-diagram, .mm-threshold-panel, .mm-toc-box, .mm-callout, table, .mm-interpret-row, .mm-closing { break-inside: avoid; }
+  h2, h3, .eyebrow { break-after: avoid; }
+  .mm-lev-card, .mm-source-table, .mm-diagram, .mm-check-item { box-shadow: none; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .mm-opt input, .mm-notes { -webkit-print-color-adjust: exact; }
+  a[href]::after { content: ""; }
+  .mm-footer { background: var(--ink); }
+}
+</style>
+</head>
+<body>
+
+<header class="mm-topbar">
+  <div class="mm-topbar-inner">
+    <div class="mm-topbar-brand">
+      <span class="mm-logo-mark"></span>
+      <span class="mm-topbar-word">Muscle-Meta Matrix<sup>™</sup><span class="full"> — Companion Guide</span></span>
+    </div>
+    <button class="mm-dl-btn" onclick="window.print()"><i class="fa-solid fa-arrow-down-to-line"></i> Download PDF</button>
+  </div>
+</header>
+
+<main>
+
+  <section class="mm-hero">
+    <div class="mmm-container">
+      <div class="mm-hero-badge"><span class="sq"></span> Muscle-Meta Matrix™</div>
+      <p class="mm-hero-meta">Health Optimization · Adults 45+</p>
+      <h1>The Osteosarcopenia Protocol</h1>
+      <p class="mm-hero-sub">Your bone-muscle blueprint — email course companion guide</p>
+    </div>
+  </section>
+
+  <section class="mmm-section-first">
+    <div class="mmm-container">
+      <div class="mm-tagline-pill">Small Steps. Exponential Gain.</div>
+
+      <div class="mm-toc-box">
+        <span class="eyebrow">What's inside this guide</span>
+        <ul class="mm-toc-list">
+          <li><span><strong>Section 1</strong> — The Bone-Muscle Axis Framework</span></li>
+          <li><span><strong>Section 2</strong> — The Four Leverage Points</span></li>
+          <li><span><strong>Section 3</strong> — Protein and the Anabolic Threshold</span></li>
+          <li><span><strong>Section 4</strong> — Your Starting Checklist</span></li>
+        </ul>
+      </div>
+
+      <div class="mm-byline">
+        <strong>Randy Bauer, PT</strong>
+        Founder, Muscle-Meta Matrix™ · rbauer@bauerpt.com
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 1 -->
+  <section class="mmm-section" id="section-1">
+    <div class="mmm-container">
+      <span class="eyebrow mm-section-num">Section 1</span>
+      <h2 class="mm-section-title">The bone-muscle axis framework</h2>
+      <hr class="mm-rule">
+
+      <div class="mm-copy">
+        <p>Bone and muscle are not independent systems. They form a single integrated unit in constant bidirectional communication — a relationship researchers now call the <strong>bone-muscle crosstalk axis</strong>. Understanding this axis is the foundation of the entire protocol.</p>
+        <p>Your muscles generate mechanical force against your bones with every movement. That force is one of the primary signals your skeletal system uses to maintain density. Simultaneously, muscle tissue secretes hormone-like proteins called <strong>myokines</strong> — including irisin, IGF-1, and IL-6 — that directly stimulate bone-forming cells (osteoblasts) and suppress bone-resorbing cells (osteoclasts).</p>
+        <p>Bone responds in kind. Osteocalcin, produced by osteoblasts, directly enhances muscle energy metabolism and contractile capacity. Sclerostin — an inhibitor of bone formation — is suppressed by mechanical loading, creating a positive feedback loop that compounds when both systems are trained together.</p>
+      </div>
+
+      <div class="mm-diagram">
+        <div class="mm-diagram-row">
+          <div class="mm-diagram-box muscle">
+            <div class="lbl">Muscle</div>
+            <div class="sub">Skeletal Tissue</div>
+          </div>
+          <div class="mm-diagram-arrows">
+            <div class="mm-arrow-block">
+              <span class="mm-arrow-label myokine">Myokines · Irisin · IGF-1 · IL-6</span>
+              <svg class="mm-arrow-svg" viewBox="0 0 300 14" preserveAspectRatio="none"><line x1="0" y1="7" x2="290" y2="7" stroke="#009090" stroke-width="2.5"/><polygon points="290,1 300,7 290,13" fill="#009090"/></svg>
+            </div>
+            <div class="mm-arrow-block">
+              <svg class="mm-arrow-svg" viewBox="0 0 300 14" preserveAspectRatio="none"><line x1="10" y1="7" x2="300" y2="7" stroke="#B5952F" stroke-width="2.5"/><polygon points="10,1 0,7 10,13" fill="#B5952F"/></svg>
+              <span class="mm-arrow-label osteokine">Osteokines · Osteocalcin · Sclerostin</span>
+            </div>
+          </div>
+          <div class="mm-diagram-box bone">
+            <div class="lbl">Bone</div>
+            <div class="sub">Skeletal Matrix</div>
+          </div>
+        </div>
+        <p class="mm-diagram-caption">Bidirectional signaling: each system amplifies the other when trained simultaneously.</p>
+      </div>
+
+      <div class="mm-callout">
+        <i class="fa-solid fa-lightbulb"></i>
+        <p><strong>Why this matters for your protocol:</strong> When you apply resistance loading <em>and</em> adequate leucine-anchored protein simultaneously, the mechanical and biochemical signals to bone and muscle compound each other. Gains in muscle mass increase bone-loading forces. Gains in bone density create a more stable platform for greater muscle force production. This is the mechanism behind <strong>Small Steps, Exponential Gain</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section class="mmm-section" id="section-2">
+    <div class="mmm-container">
+      <span class="eyebrow mm-section-num">Section 2</span>
+      <h2 class="mm-section-title">The four leverage points</h2>
+      <hr class="mm-rule">
+
+      <p class="mm-copy" style="font-size:15.5px;">Research identifies four primary mechanisms that drive osteosarcopenia progression — and four corresponding inputs that work through the bone-muscle axis to reverse it. Each recommendation in this protocol maps to one or more of these leverage points.</p>
+
+      <div class="mm-leverage-grid">
+        <div class="mm-lev-card">
+          <div class="mm-lev-num">1</div>
+          <h4>Progressive resistance loading</h4>
+          <p>Bones respond to load magnitude, not movement volume. Training at 70–85% of maximum generates the mechanical stimulus that triggers osteoblast activation and bone formation signaling simultaneously with muscle hypertrophy.</p>
+        </div>
+        <div class="mm-lev-card gold">
+          <div class="mm-lev-num">2</div>
+          <h4>Protein &amp; leucine threshold</h4>
+          <p>Adults 55+ require 2.5–3g of leucine per meal to maximally activate muscle protein synthesis (mTOR pathway). Distributing protein across meals — not concentrating it at dinner — determines whether the anabolic signal fires at each eating occasion.</p>
+        </div>
+        <div class="mm-lev-card">
+          <div class="mm-lev-num">3</div>
+          <h4>Power training &amp; fast-twitch preservation</h4>
+          <p>Fast-twitch muscle fibers are the first lost in sarcopenia and produce the highest bone-loading forces. Training with explosive intent at moderate loads preserves both fiber type and the peak forces bones need most.</p>
+        </div>
+        <div class="mm-lev-card gold">
+          <div class="mm-lev-num">4</div>
+          <h4>Micronutrient synergy</h4>
+          <p>Vitamin D3 enables calcium absorption. K2 (MK-7) directs calcium into bone matrix rather than soft tissue. Magnesium enables D3 activation. These four nutrients operate as a coordinated system — calcium alone addresses one variable of four.</p>
+        </div>
+      </div>
+
+      <div class="mm-compound-note">
+        <strong>The compound effect:</strong> Each leverage point activates the bone-muscle axis through a different pathway. Applying two or more simultaneously creates results that multiply rather than add — the defining principle of the Muscle-Meta integrated approach.
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section class="mmm-section" id="section-3">
+    <div class="mmm-container">
+      <span class="eyebrow mm-section-num">Section 3</span>
+      <h2 class="mm-section-title">Protein and the anabolic threshold</h2>
+      <hr class="mm-rule">
+
+      <div class="mm-copy">
+        <p>Muscle protein synthesis — the process of building and repairing muscle tissue — is triggered by a specific leucine threshold at each meal. Leucine is the branched-chain amino acid that acts as the primary signal activating the mTOR pathway, which initiates muscle protein synthesis.</p>
+        <p>After age 55, this threshold rises due to a phenomenon called <strong>anabolic resistance</strong>. The muscle's sensitivity to leucine decreases, requiring a higher dose per meal to activate the same repair response as at younger ages. Total daily protein intake is only part of the equation — dose and distribution per meal determines whether the synthesis signal fires.</p>
+      </div>
+
+      <div class="mm-threshold-panel">
+        <div class="mm-bars">
+          <div class="mm-threshold-line"><span class="tl-label">Threshold</span></div>
+          <div class="mm-bar-row">
+            <div class="mm-bar-toprow"><span class="mm-bar-label">Adults 65+</span><span class="mm-bar-value tier65">~3.0g leucine / meal</span></div>
+            <div class="mm-bar-track"><div class="mm-bar-fill tier65" style="width:85.7%;"></div></div>
+          </div>
+          <div class="mm-bar-row">
+            <div class="mm-bar-toprow"><span class="mm-bar-label">Adults 55–65</span><span class="mm-bar-value tier5565">~2.5g leucine / meal</span></div>
+            <div class="mm-bar-track"><div class="mm-bar-fill tier5565" style="width:71.4%;"></div></div>
+          </div>
+          <div class="mm-bar-row">
+            <div class="mm-bar-toprow"><span class="mm-bar-label">Adults 30s–40s</span><span class="mm-bar-value tier3040">~1.8g leucine / meal</span></div>
+            <div class="mm-bar-track"><div class="mm-bar-fill tier3040" style="width:51.4%;"></div></div>
+          </div>
+        </div>
+        <div class="mm-key-box">
+          <span class="eyebrow">Key principle</span>
+          <p>After 55, muscles require more protein per meal to trigger the repair response.</p>
+          <p>Spread 25–35g per meal. Not just at dinner.</p>
+        </div>
+      </div>
+      <p class="mm-footnote" style="text-align:center;margin-top:var(--s-2);">Leucine threshold for maximal muscle protein synthesis by age group.</p>
+
+      <p class="mm-copy" style="font-size:15.5px; margin-top: var(--s-5);"><strong>Distribution principle:</strong> Spreading 25–35g of leucine-rich protein across each of three meals produces significantly greater 24-hour muscle protein synthesis than the same total protein consumed primarily at dinner — a common pattern in adults over 55.</p>
+
+      <h3 style="margin-top: var(--s-6); font-size: 20px;">High-leucine protein sources</h3>
+      <table class="mm-source-table">
+        <thead><tr><th>Food source</th><th>Serving</th><th>Protein</th><th>Leucine (est.)</th></tr></thead>
+        <tbody>
+          <tr><td>Chicken breast (cooked)</td><td>4 oz / 113g</td><td class="num">~35g</td><td class="num">~2.8g</td></tr>
+          <tr><td>Salmon (cooked)</td><td>4 oz / 113g</td><td class="num">~28g</td><td class="num">~2.2g</td></tr>
+          <tr><td>Greek yogurt (plain)</td><td>8 oz / 227g</td><td class="num">~20g</td><td class="num">~1.6g</td></tr>
+          <tr><td>Cottage cheese</td><td>1 cup / 226g</td><td class="num">~28g</td><td class="num">~2.3g</td></tr>
+          <tr><td>Whole eggs</td><td>3 large</td><td class="num">~18g</td><td class="num">~1.5g</td></tr>
+          <tr><td>Whey protein isolate</td><td>1 scoop ~30g</td><td class="num">~25g</td><td class="num">~2.7g</td></tr>
+          <tr><td>Beef (lean, cooked)</td><td>4 oz / 113g</td><td class="num">~33g</td><td class="num">~2.6g</td></tr>
+          <tr><td>Edamame (shelled)</td><td>1 cup / 155g</td><td class="num">~17g</td><td class="num">~1.2g</td></tr>
+        </tbody>
+      </table>
+      <p class="mm-footnote">Leucine values are estimates based on published amino acid composition data. Target ≥2.5g leucine per meal to reliably exceed the anabolic threshold after age 55.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section class="mmm-section" id="section-4">
+    <div class="mmm-container">
+      <span class="eyebrow mm-section-num">Section 4</span>
+      <h2 class="mm-section-title">Your starting checklist</h2>
+      <hr class="mm-rule">
+
+      <p class="mm-copy" style="font-size:15.5px;">These five questions establish your functional baseline. Answer honestly. Record your responses, then return to them after completing the 30-Day Action Plan to measure your progress.</p>
+
+      <div class="mm-checklist" id="mm-checklist">
+        <div class="mm-check-item" data-q="1">
+          <div class="mm-check-q">
+            <div class="mm-check-num">1</div>
+            <div class="mm-check-body">
+              <p class="q">When getting up from a low chair or the floor, do you use your arms to push up or need a moment to steady yourself before walking?</p>
+              <p class="ind">Indicator: lower extremity strength and neuromuscular coordination</p>
+              <div class="mm-check-options">
+                <span class="mm-opt yes"><input type="radio" name="q1" id="q1-yes" value="1"><label for="q1-yes">Yes</label></span>
+                <span class="mm-opt sometimes"><input type="radio" name="q1" id="q1-sm" value="0.5"><label for="q1-sm">Sometimes</label></span>
+                <span class="mm-opt no"><input type="radio" name="q1" id="q1-no" value="0"><label for="q1-no">No</label></span>
+                <span class="mm-notes-label">Notes:</span><input class="mm-notes" type="text">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mm-check-item" data-q="2">
+          <div class="mm-check-q">
+            <div class="mm-check-num">2</div>
+            <div class="mm-check-body">
+              <p class="q">Has your body felt softer or less firm, even without significant weight change in recent years?</p>
+              <p class="ind">Indicator: lean mass composition shift — muscle replaced by fat tissue</p>
+              <div class="mm-check-options">
+                <span class="mm-opt yes"><input type="radio" name="q2" id="q2-yes" value="1"><label for="q2-yes">Yes</label></span>
+                <span class="mm-opt sometimes"><input type="radio" name="q2" id="q2-sm" value="0.5"><label for="q2-sm">Sometimes</label></span>
+                <span class="mm-opt no"><input type="radio" name="q2" id="q2-no" value="0"><label for="q2-no">No</label></span>
+                <span class="mm-notes-label">Notes:</span><input class="mm-notes" type="text">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mm-check-item" data-q="3">
+          <div class="mm-check-q">
+            <div class="mm-check-num">3</div>
+            <div class="mm-check-body">
+              <p class="q">Do you hesitate before stepping off a curb, onto uneven ground, or down a flight of stairs?</p>
+              <p class="ind">Indicator: proprioceptive confidence and balance system function</p>
+              <div class="mm-check-options">
+                <span class="mm-opt yes"><input type="radio" name="q3" id="q3-yes" value="1"><label for="q3-yes">Yes</label></span>
+                <span class="mm-opt sometimes"><input type="radio" name="q3" id="q3-sm" value="0.5"><label for="q3-sm">Sometimes</label></span>
+                <span class="mm-opt no"><input type="radio" name="q3" id="q3-no" value="0"><label for="q3-no">No</label></span>
+                <span class="mm-notes-label">Notes:</span><input class="mm-notes" type="text">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mm-check-item" data-q="4">
+          <div class="mm-check-q">
+            <div class="mm-check-num">4</div>
+            <div class="mm-check-body">
+              <p class="q">Do you typically consume less than 25–30 grams of protein at your main meal?</p>
+              <p class="ind">Indicator: leucine threshold attainment per meal</p>
+              <div class="mm-check-options">
+                <span class="mm-opt yes"><input type="radio" name="q4" id="q4-yes" value="1"><label for="q4-yes">Yes</label></span>
+                <span class="mm-opt sometimes"><input type="radio" name="q4" id="q4-sm" value="0.5"><label for="q4-sm">Sometimes</label></span>
+                <span class="mm-opt no"><input type="radio" name="q4" id="q4-no" value="0"><label for="q4-no">No</label></span>
+                <span class="mm-notes-label">Notes:</span><input class="mm-notes" type="text">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mm-check-item" data-q="5">
+          <div class="mm-check-q">
+            <div class="mm-check-num">5</div>
+            <div class="mm-check-body">
+              <p class="q">In the last 6 months, have you scaled back a physical activity due to concern about pain, fatigue, or falling?</p>
+              <p class="ind">Indicator: functional confidence and activity avoidance pattern</p>
+              <div class="mm-check-options">
+                <span class="mm-opt yes"><input type="radio" name="q5" id="q5-yes" value="1"><label for="q5-yes">Yes</label></span>
+                <span class="mm-opt sometimes"><input type="radio" name="q5" id="q5-sm" value="0.5"><label for="q5-sm">Sometimes</label></span>
+                <span class="mm-opt no"><input type="radio" name="q5" id="q5-no" value="0"><label for="q5-no">No</label></span>
+                <span class="mm-notes-label">Notes:</span><input class="mm-notes" type="text">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mm-interpret-wrap">
+        <h3 style="font-size:20px; margin-bottom: var(--s-4);">Interpreting your responses</h3>
+        <div class="mm-interpret-row band-0" id="band-0">
+          <span class="tag">0–1 signals</span>
+          <p><strong>Preventive stage</strong> — build the protocol as an optimization and maintenance strategy before decline begins.</p>
+        </div>
+        <div class="mm-interpret-row band-1" id="band-1">
+          <span class="tag">2–3 signals</span>
+          <p><strong>Early warning</strong> — targeted intervention now produces the highest return. This is the ideal window for reversal.</p>
+        </div>
+        <div class="mm-interpret-row band-2" id="band-2">
+          <span class="tag">4–5 signals</span>
+          <p><strong>Active signals</strong> — a structured, integrated protocol is your most effective next step. Continue to the Movement Blueprint lesson to begin.</p>
+        </div>
+        <p class="mm-signal-readout" id="mm-signal-readout">Answer all five questions to see where you stand.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="mmm-container">
+    <div class="mm-closing">
+      <p class="tag">Small Steps. Exponential Gain.</p>
+      <p class="next">Continue to the Movement Blueprint — the next lesson in your Osteosarcopenia Protocol course.</p>
+      <p class="sig">Randy Bauer, PT · Founder, Muscle-Meta Matrix™</p>
+    </div>
+  </div>
+
+</main>
+
+<footer class="mm-footer">
+  <div class="mm-footer-inner">
+    <div class="mm-footer-row">
+      <span>Randy Bauer, PT · Founder, Muscle-Meta Matrix™</span>
+      <a href="mailto:rbauer@bauerpt.com">rbauer@bauerpt.com</a>
+    </div>
+    <p class="mm-footer-disclaimer">For educational purposes only. Not medical advice. Consult your healthcare provider before beginning any new exercise or nutrition program. © 2026 Muscle-Meta Matrix™. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var readout = document.getElementById('mm-signal-readout');
+    var bands = [document.getElementById('band-0'), document.getElementById('band-1'), document.getElementById('band-2')];
+    var radios = document.querySelectorAll('#mm-checklist input[type="radio"]');
+
+    function evaluate () {
+      var answered = 0, total = 0;
+      for (var i = 1; i <= 5; i++) {
+        var group = document.getElementsByName('q' + i);
+        var checked = null;
+        for (var j = 0; j < group.length; j++) { if (group[j].checked) { checked = group[j]; break; } }
+        if (checked) { answered++; total += parseFloat(checked.value); }
+      }
+      bands.forEach(function (b) { b.classList.remove('active'); });
+      if (answered < 5) {
+        readout.innerHTML = answered === 0
+          ? 'Answer all five questions to see where you stand.'
+          : (5 - answered) + ' question' + ((5 - answered) === 1 ? '' : 's') + ' remaining.';
+        return;
+      }
+      var band = total <= 1.5 ? 0 : (total <= 3.5 ? 1 : 2);
+      bands[band].classList.add('active');
+      readout.innerHTML = 'Your signal count: <strong>' + total + ' of 5</strong>.';
+    }
+
+    radios.forEach ? radios.forEach(function (r) { r.addEventListener('change', evaluate); })
+      : Array.prototype.forEach.call(radios, function (r) { r.addEventListener('change', evaluate); });
+
+    var topbar = document.querySelector('.mm-topbar');
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 8) { topbar.style.boxShadow = '0 4px 20px rgba(26,35,50,0.06)'; }
+      else { topbar.style.boxShadow = 'none'; }
+    }, { passive: true });
+  })();
+</script>
+
+</body>
+</html>
